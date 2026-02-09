@@ -2,7 +2,7 @@
 
 ## 老師的課程首頁
 
-https://myweb.ntut.edu.tw/~tjhsieh/c/dm/dm2025s/
+https://tjhsieh.github.io/c/dm/dm2026s/syllabus/index.html
 
 ## 作業一影片講解
 
