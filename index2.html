@@ -1,0 +1,604 @@
+<!doctype html>
+<html lang="en-us">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+	<title>HW2 詳解</title>
+
+
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+
+	<link rel="stylesheet" href="dist/theme/black.css" id="theme">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+	<link rel="stylesheet" href="custom.css">
+	<style>
+		canvas#live2D {
+			transition-property: opacity;
+			transition-duration: 0.3s;
+			pointer-events: none;
+			position: fixed !important;
+			bottom: 0;
+			right: -20px;
+			z-index: 999999;
+			opacity: 1;
+		}
+
+		canvas#live2D:hover {
+			transition-delay: 0.5s;
+		}
+
+		canvas#live2D.hidden,
+		canvas#live2D:hover {
+			transition-property: opacity;
+			transition-duration: 0.3s;
+			opacity: 0;
+		}
+	</style>
+
+
+	<!-- Pollyfill script -->
+	<script src="./anime/dist/core-minified.js"></script>
+	<!-- Live2DCubismCore script -->
+	<script src="./anime/core/live2dcubismcore.js"></script>
+	<!-- Build script -->
+	<script src="./anime/dist/bundle.js"></script>
+	<script src="./anime/custom.js"></script>
+</head>
+
+<body onkeydown="toggleAvatar(event)">
+
+
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<h1>HW2 詳解</h1>
+			</section>
+            <!--Q1-->
+			<section>
+				<span class="subtle">Question 1</span>
+				<section data-auto-animate>
+					<h2>問題1</h2>
+					<h4>page 131, chapter 2.1 Exercises 2</h4>
+					<div class="question-block" data-id="question1">
+						<span data-id="q1-1">
+							Use set builder notation to give a description of each of these sets.
+						</span>
+						<br>
+						<ol class="alphaList tiny-text">
+							<li>$\{0, 3, 6, 9, 12\}$</li>
+							<li>$\{-3,-2,-1, 0, 1, 2, 3\}$</li>
+							<li>$\{m, n, o, p\}$</li>
+						</ol>
+					</div>
+				</section>
+				<section data-auto-animate>
+					<h2>問題1</h2>
+					<h4>page 131, chapter 2.1 Exercises 2</h4>
+					<div class="question-block" data-id="question1">
+						<span data-id="q1-1">
+							Use set builder notation to give a description of each of these sets.
+						</span>
+						<br>
+						<ol class="alphaList tiny-text">
+							<li>$\{0, 3, 6, 9, 12\}$</li>
+							<li>$\{-3,-2,-1, 0, 1, 2, 3\}$</li>
+							<li>$\{m, n, o, p\}$</li>
+						</ol>
+					</div>
+					<p>
+					<ol class="alphaList tiny-text">
+						<li>
+							$\{3n\ |\ n = 0, 1, 2, 3, 4\}$ or $\{x\ |\ x\ is\ a\ multiple\ of\ 3\wedge 0\le x\le 12\}$
+						</li>
+						<li>
+							$\{x\ |\ -3\le x\le 3\}$, where we are assuming that the domain (universe of discourse) is the set of integers.
+						</li>
+                        <li>
+							$\{x\ |\ x\ is\ a\ letter\ of\ the\ word\ monopoly\ other\ than\ l\ or\ y\}$
+						</li>
+					</ol>
+					</p>
+				</section>
+			</section>
+            <!--Q2-->
+			<section>
+				<span class="subtle">Question 2</span>
+				<section data-auto-animate>
+					<h2>問題2</h2>
+					<h4>page 132, chapter 2.1 Exercises 11</h4>
+					<div class="question-block" data-id="question2">
+						<span data-id="q2-1">
+							Determine whether each of these statements is true or false.
+						</span>
+						<br>
+						<ol class="alphaList tiny-text">
+                            <li> $0 \in \emptyset$</li> 
+							<li> $\emptyset \in \{0\}$</li>
+                            <li> $\{0\} \subset \emptyset$</li>
+                            <li> $\emptyset \subset \{0\}$</li>
+                            <li> $\{0\} \in \{0\}$</li>
+                            <li> $\{0\} \subset \{0\}$</li>
+                            <li> $\{\emptyset\} \subseteq \{\emptyset\}$</li>
+						</ol>
+					</div>
+				</section>
+				<section data-auto-animate>
+					<div class="question-block" data-id="question2">
+						<span data-id="q2-1">
+							Determine whether each of these statements is true or false.
+						</span>
+						<br>
+						<ol class="alphaList tiny-text">
+                            <li> $0 \in \emptyset$</li>
+                            <li> $\emptyset \in \{0\}$</li>
+                            <li> $\{0\} \subset \emptyset$</li>
+                            <li> $\emptyset \subset \{0\}$</li>
+                            <li> $\{0\} \in \{0\}$</li>
+                            <li> $\{0\} \subset \{0\}$</li>
+                            <li> $\{\emptyset\} \subseteq \{\emptyset\}$</li>
+						</ol>
+					</div>
+                    <div class="tiny-text">
+						<div class="fragment shrinked question-block side-note" align="left">
+							$\emptyset = \{ \} \neq \{\emptyset\}$<br>
+                            $a \in A$ : a is an element of the set A.<br>
+                            $A \subseteq B$ : A is a subset of the set B, $\forall x(x \in A \rightarrow x \in B)$.<br>
+                            $A \subset B$ : A is a proper subset of B, $\forall x(x \in A \rightarrow x \in B) \wedge \exists x(x \in B \wedge x \not\in A)$.
+						</div>
+					</div>
+					<p>
+					<ol class="alphaList tiny-text">
+						<li>False</li>
+						<li>False</li>
+                        <li>False</li>
+                        <li>True</li>
+                        <li>False</li>
+                        <li>False</li>
+                        <li>True</li>
+					</ol>
+					</p>
+				</section>
+			</section>
+			<!--Q3-->
+			<section>
+				<span class="subtle">Question 3</span>
+				<section data-auto-animate>
+					<h2>問題3</h2>
+					<h4>page 132, Section 2.1 Exercise 36</h4>
+					<div class="question-block" data-id="question1">Find <span data-id="question1-1">$A^3$</span> if<br>
+						<ol class="alphaList">
+							<li>
+								$A = \{a\}$
+							</li>
+							<li>
+								$A = \{0,a\}$
+							</li>
+						</ol>
+					</div>
+				</section>
+				<section data-auto-animate>
+					<h2>問題3</h2>
+					<h4>page 132, Section 2.1 Exercise 36</h4>
+					<div class="question-block" data-id="question1">Find <span data-id="question1-1">$A^3$</span> if<br>
+						<ol class="alphaList">
+							<li>
+								$A = \{a\}$
+							</li>
+							<li>
+								$A = \{0,a\}$
+							</li>
+						</ol>
+					</div>
+					<div class="tiny-text">
+						<div class="fragment shrinked question-block side-note">
+							$A^n = \{(a_1, a_2, … , a_n) ∣ a_i ∈ A \: for \: i = 1, 2, … , n\}$
+						</div>
+					</div>
+
+					<p>
+					<ol class="alphaList tiny-text">
+						<li>
+							$\{(a, a, a)\}$
+						</li>
+						<li>
+							$\{(0, 0, 0),(0, 0, a),(0, a, 0),(0, a, a),(a, 0, 0),(a, 0, a),(a, a, 0),(a, a, a)\}$
+						</li>
+					</ol>
+					</p>
+				</section>
+			</section>
+			<!--Q4-->
+			<section>
+				<span class="subtle">Question 4</span>
+				<section data-auto-animate>
+					<h2>問題4</h2>
+					<h4>page 144, Section 2.2 Exercise 4</h4>
+					<div class="question-block" data-id="question2">
+						<span data-id="q2-1">
+							Let $A = \{a, b, c, d, e\}$ and $B = \{a, b, c, d, e, f, g, h\}$. Find
+						</span>
+						<br>
+						<ol class="alphaList tiny-text">
+							<li>$A ∪ B$</li>
+							<li>$A ∩ B$</li>
+							<li>$A − B$</li>
+							<li>$B − A$</li>
+						</ol>
+					</div>
+				</section>
+				<section data-auto-animate>
+					<h2>問題4</h2>
+					<h4>page 144, Section 2.2 Exercise 4</h4>
+					<div class="question-block" data-id="question2">
+						<span data-id="q2-1">
+							Let $A = \{a, b, c, d, e\}$ and $B = \{a, b, c, d, e, f, g, h\}$. Find
+						</span>
+						<br>
+						<ol class="alphaList tiny-text">
+							<li>$A ∪ B$</li>
+							<li>$A ∩ B$</li>
+							<li>$A − B$</li>
+							<li>$B − A$</li>
+						</ol>
+					</div>
+					<div class="tiny-text">
+						<div class="fragment shrinked question-block side-note" align="left">
+							$A = \{a, b, c, d, e\}$<br>
+							$B = \{a, b, c, d, e, f, g, h\}$
+						</div>
+					</div>
+					<p class="tiny-text">
+					<ol class="alphaList tiny-text">
+						<li>$\{a, b, c, d, e, f, g, h\}=B$</li>
+						<li>$\{a, b, c, d, e\}=A$</li>
+						<li>$\varnothing$</li>
+						<li>$\{f, g, h\}$</li>
+					</ol>
+					</p>
+				</section>
+			</section>
+			<!--Q5-->
+			<section>
+				<span class="subtle">Question 5</span>
+				<section data-auto-animate>
+					<h2>問題5</h2>
+					<h4>page 163, Section 2.3 Exercise 38</h4>
+					<div class="question-block" data-id="question3">
+						<span data-id="q3-1">
+							Find $f ◦g$ and $g◦f$ , where $f(x) = x^2 + 1$ and $g(x) = x + 2$, are functions from
+							$\textbf{R}$ to $\textbf{R}$
+						</span>
+					</div>
+				</section>
+				<section data-auto-animate>
+					<h2>問題5</h2>
+					<h4>page 163, Section 2.3 Exercise 38</h4>
+					<div class="question-block" data-id="question3">
+						<span data-id="q3-1">
+							Find $f ◦g$ and $g◦f$ , where $f(x) = x^2 + 1$ and $g(x) = x + 2$, are functions from
+							$\textbf{R}$ to $\textbf{R}$
+						</span>
+					</div>
+					<div class="tiny-text">
+						<div class="fragment shrinked question-block side-note" align="left">
+							Given: $g: R \to R$ and $f: R \to R$
+						</div>
+					</div>
+					<p class="tiny-text">
+						We have $(f ◦g)(x)=f(g(x))=f(x+2)=(x+2)^2+1=x^2+4x+5$,<br> whereas $(g◦f)(x) =
+						g(f(x))=g(x^2+1)=x^2+1+2=x^2+3$. Note that they are not equal
+					</p>
+				</section>
+			</section>
+			<!--Q6-->
+			<section>
+				<span class="subtle">Question 6</span>
+				<section data-auto-animate>
+					<h2>問題6</h2>
+					<h4>page 179, Section 2.4 Exercise 34</h4>
+					<div class="question-block" data-id="question4">
+						<span data-id="q4-1">
+							Compute each of these double sums.<br>
+							<ol class="alphaList tiny-text">
+								<li data-id="q4-1-1"> 
+									$\sum\limits_{i=1}^3 \sum\limits_{j=1}^2 (i-j)$
+								</li>
+								<li class="inline" data-id="q4-1-2">
+									$\sum\limits_{i=0}^3 \sum\limits_{j=0}^2 (3i+2j)$
+								</li>
+								<li data-id="q4-1-3">
+									$\sum\limits_{i=1}^3 \sum\limits_{j=0}^2 j$
+								</li>
+								<li class="inline" data-id="q4-1-4">
+									$\sum\limits_{i=1}^2 \sum\limits_{j=0}^3 (i^2j^3)$
+								</li>
+							</ol>
+						</span>
+					</div>
+				</section>
+				<section data-auto-animate>
+					<h2>問題6</h2>
+					<h4>page 179, Section 2.4 Exercise 34</h4>
+					<div class="question-block" data-id="question4">
+						<span data-id="q4-1">
+							Compute each of these double sums.<br>
+							<ol class="alphaList tiny-text">
+								<li data-id="q4-1-1"> 
+									$\sum\limits_{i=1}^3 \sum\limits_{j=1}^2 (i-j)$ <span class="fragment shrinked">$= \sum\limits_{i=1}^3 [(i-1)+(i-2)]$</span><span class="fragment shrinked">$ = \sum\limits_{i=1}^3 (2i-3)$</span>
+								</li>
+								<li class="inline" data-id="q4-1-2">
+									$\sum\limits_{i=0}^3 \sum\limits_{j=0}^2 (3i+2j)$ <span class="fragment shrinked">$= \sum\limits_{i=0}^3 [(3i+0)+(3i+2)+(3i+4)]$</span><span class="fragment shrinked">$ = \sum\limits_{i=0}^3 (9i+6)$</span>
+								</li>
+								<li data-id="q4-1-3">
+									$\sum\limits_{i=1}^3 \sum\limits_{j=0}^2 j$ <span class="fragment shrinked">$= \sum\limits_{i=1}^3 3$</span>
+								</li>
+								<li class="inline" data-id="q4-1-4">
+									$\sum\limits_{i=1}^2 \sum\limits_{j=0}^3 (i^2j^3)$ <span class="fragment shrinked">$= \sum\limits_{i=1}^2 [0 + (i^2)+(8i^2)+(27i^2)]$</span><span class="fragment shrinked">$ = \sum\limits_{i=1}^2 (36i^2)$</span>
+								</li>
+							</ol>
+						</span>
+					</div>
+					<ol class="alphaList tiny-text fake-mathjx">
+						<li>(1 − 1) + (1 − 2) + (2 − 1) + (2 − 2) + (3 − 1) + (3 − 2) = 3</li>
+						<li>(0 + 0) + (0 + 2) + (0 + 4) + (3 + 0) + (3 + 2) + (3 + 4) + (6 + 0) + (6 + 2) + <br>(6 + 4)
+							+ (9 + 0) + (9 + 2) + (9 + 4) = 78</li>
+						<li>(0 + 1 + 2) + (0 + 1 + 2) + (0 + 1 + 2) = 9</li>
+						<li>(0 + 1 + 8 + 27) + (0 + 4 + 32 + 108) = 180</li>
+					</ol>
+				</section>
+			</section>
+			<!--Q7-->
+			<section>
+				<span class="subtle">Question 7</span>
+				<section data-auto-animate>
+					<h2>問題7</h2>
+					<h4>page 186, chapter 2.5 Exercises 2</h4>
+					<div class="question-block" data-id="question2">
+						<span data-id="q7-1">
+							Determine whether each of these sets is finite, countably infinite, or uncountable. For those that are countably infinite, exhibit a one-to-one correspondence between the set of positive integers and that set.
+						</span>
+						<br>
+						<ol class="alphaList tiny-text">
+                            <li> the integers greater than 10 </li> 
+							<li> the odd negative integers </li>
+                            <li> the integers with absolute value less than 1,000,000 </li>
+                            <li> the real numbers between 0 and 2 </li>
+                            <li> the set $A \times Z^+$ where $A = \{2, 3\}$ </li>
+                            <li> the integers that are multiples of 10</li>
+						</ol>
+					</div>
+				</section>
+				<section data-auto-animate>
+					<div class="question-block" data-id="question2">
+						<span data-id="q7-1">
+							Determine whether each of these sets is finite, countably infinite, or uncountable. For those that are countably infinite, exhibit a one-to-one correspondence between the set of positive integers and that set.
+						</span>
+						<br>
+						<ol class="alphaList tiny-text">
+                            <li> the integers greater than 10 </li> 
+							<li> the odd negative integers </li>
+                            <li> the integers with absolute value less than 1,000,000 </li>
+                            <li> the real numbers between 0 and 2 </li>
+                            <li> the set $A \times Z^+$ where $A = \{2, 3\}$ </li>
+                            <li> the integers that are multiples of 10</li>
+						</ol>
+					</div>
+					<p>
+						<ol class="alphaList tiny-text">
+							<font size="2">
+							<li>This set is countably infinite. The integers in the set are 11, 12, 13, 14, and so on. We can list these numbers in that order, thereby establishing the desired correspondence. In other words, the correspondence is given by $1\leftrightarrow11$, $2\leftrightarrow12$, $3\leftrightarrow13$, and so on; in general $n\leftrightarrow(n + 10)$.</li>
+							<li>This set is countably infinite. The integers in the set are -1, -3, -5, -7, and so on. We can list these numbers in that order, thereby establishing the desired correspondence. In other words, the correspondence is given by $1\leftrightarrow-1$, $2\leftrightarrow-3$, $3\leftrightarrow-5$, and so on; in general $n\leftrightarrow-(2n - 1)$.</li>
+							<li>This set is $\{-999,999, -999,998, \dots, -1, 0, 1, \dots, 999,999\}$. It is finite, with cardinality 1,999,999.</li>
+							<li>This set is uncountable. We can prove it by the same diagonalization argument as was used to prove that the set of all reals is uncountable in Example 5.</li>
+							<li>This set is countable. We can list its elements in the order $(2, 1), (3, 1), (2, 2), (3, 2), (2, 3), (3, 3), \dots$, giving us the one-to-one correspondence $1\leftrightarrow(2, 1)$, $2\leftrightarrow(3, 1)$, $3\leftrightarrow(2, 2)$, $4\leftrightarrow(3, 2)$, $5\leftrightarrow(2, 3)$, $6\leftrightarrow(3, 3), \dots$ .</li>
+							<li>This set is countable. The integers in the set are 0, $\pm10, \pm20, \pm30$, and so on. We can list these numbers in the order 0, 10, -10, 20, -20, 30, $\dots$, thereby establishing the desired correspondence. In other words, the correspondence is given by $1\leftrightarrow0$, $2\leftrightarrow10$, $3\leftrightarrow-10$, $4\leftrightarrow20$, $5\leftrightarrow-20$, $6\leftrightarrow30$, and so on.</li>
+							</font>
+						</ol>
+					</p>
+				</section>
+			</section>
+			<!--Q8-->
+			<section>
+				<span class="subtle">Question 8</span>
+				<section data-auto-animate>
+					<h2>問題8</h2>
+					<h4>page 186, Section 2.5 Exercise 6</h4>
+					<div class="question-block" data-id="question5">
+						Suppose that Hilbert's Grand Hotel is fully occupied, but
+						the hotel closes all the even numbered rooms for maintenance. Show that all guests can remain
+						in
+						the hotel
+					</div>
+				</section>
+				<section data-auto-animate>
+					<h2>問題8</h2>
+					<h4>page 186, Section 2.5 Exercise 6</h4>
+					<div class="question-block" data-id="question5">
+						Suppose that Hilbert's Grand Hotel is fully occupied, but
+						the hotel closes all the even numbered rooms for maintenance. Show that all guests can remain
+						in
+						the hotel
+					</div>
+					<div class="question-block side-note">
+						Suppose that the hotel has infinite rooms and guests can't share room with other guests.
+					</div>
+					<p class="tiny-text">
+						We want a one-to-one function from the set of positive integers to the set of odd positive integers. The simplest one to use is $f(n)=2n-1$ .We put the guest currently in Room $n$ into Room$(2n-1)$.Thus the guest in Room 1 stays put,the guest in Room 2 moves to Room 3,the guest in Room 3 moves to Room 5,and so on.
+					</p>
+				</section>
+			</section>
+			<!--Q9-->
+			<section>
+				<span class="subtle">Question 9</span>
+				<section data-auto-animate>
+					<h2>問題9</h2>
+					<h4>page 194, chapter 2.6 Exercises 20</h4>
+					<div class="question-block" data-id="question2">
+						<span data-id="q9-1">
+							Let \[A = \left[\begin{matrix}
+								-1 & 2 \\
+								1 & 3 \\
+								\end{matrix}\right].\]
+						</span>
+						<br>
+						<ol class="alphaList tiny-text">
+                            <li> Find $A^{-1}$. [Hint: Use Exercise 19.] </li> 
+							<li> Find $A^3$. </li>
+                            <li> Find $(A^{-1})^3$. </li>
+                            <li> Use your answers to (b) and (c) to show that $(A^{-1})^3$ is the inverse of $A^3$. </li>
+						</ol>
+					</div>
+				</section>
+				<section data-auto-animate>
+					<div class="question-block" data-id="question2">
+						<span data-id="q9-1">
+							Let	\[A = \left[\begin{matrix}
+								-1 & 2 \\
+								1 & 3 \\
+								\end{matrix}\right].\]
+						</span>
+						<br>
+						<ol class="alphaList tiny-text">
+                            <li> Find $A^{-1}$. [Hint: Use Exercise 19.] </li> 
+							<li> Find $A^3$. </li>
+                            <li> Find $(A^{-1})^3$. </li>
+                            <li> Use your answers to (b) and (c) to show that $(A^{-1})^3$ is the inverse of $A^3$. </li>
+						</ol>
+					</div>
+					<p>
+						<ol class="alphaList tiny-text">
+							<li>Using Exercise 19, noting that $ad-bc = -5$, we write down the inverse immediately:
+								\(\left[\begin{matrix}
+									-\frac{3}{5} & \frac{2}{5} \\
+									\frac{1}{5} & \frac{1}{5} \\
+									\end{matrix}\right].\)</li>
+							<li>We multiply to obtain 
+								\(A^2 = \left[\begin{matrix}
+									3 & 4 \\
+									2 & 11 \\
+									\end{matrix}\right]\) and then 
+								\(A^3 = \left[\begin{matrix}
+									1 & 18 \\
+									9 & 37 \\
+									\end{matrix}\right].\)</li>
+							<li>We multiply to obtain 
+								\((A^{-1})^2 = \left[\begin{matrix}
+									\frac{11}{25} & -\frac{4}{25} \\
+									-\frac{2}{25} & \frac{3}{25} \\
+									\end{matrix}\right]\) and then
+								\((A^{-1})^3 = \left[\begin{matrix}
+									-\frac{37}{125} & \frac{18}{125} \\
+									\frac{9}{125} & -\frac{1}{125} \\
+									\end{matrix}\right].\)</li>
+							<li>Applying the method of Exercise 19 for obtaining inverses to the answer in part (b), we obtain the answer in part (c). Therefore $(A^3)^{-1} = (A^{-1})^3$.</li>
+						</ol>
+					</p>
+				</section>
+			</section>
+
+			<!--</section>-->
+		</div>
+	</div>
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script src="plugin/math/math.js"></script>
+	<script>
+		function getPath() {
+			var path = "";
+			nodes = window.location.pathname.split('/');
+			for (var index = 0; index < nodes.length - 3; index++) {
+				path += "../";
+			}
+			return path;
+		}
+
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
+			math: {
+				mathjax: 'https://cdn.jsdelivr.net/gh/mathjax/mathjax@2.7.8/MathJax.js',
+				config: 'TeX-AMS_HTML-full',
+				// pass other options into `MathJax.Hub.Config()`
+				TeX: {
+					Macros: {
+						RR: "{\\bf R}"
+					}
+				}
+			},
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath],
+			dependencies: [{
+				src: 'plugin/math/math.js',
+				async: true
+			}]
+		});
+
+		Reveal.on('autoanimate', event => {
+			setTimeout(function () {
+				removeAllAutoAnimates(event.toSlide)
+			}, Reveal.getConfig().autoAnimateDuration * 1000);
+
+		});
+
+
+		function removeAllAutoAnimates(element) {
+			try {
+				element.removeAttribute("data-auto-animate-target");
+				element.childNodes.forEach(element => {
+					removeAllAutoAnimates(element);
+				});
+			} catch {
+
+			}
+
+
+		}
+	</script>
+
+	<div style="display: none;" id="audio"></div>
+</body>
+<script>
+	// LIPSYNC
+	var audioElem = document.getElementById("audio");
+	var modifier = 150;
+	var lastVolume = 0;
+	setInterval(() => {
+		var volume = getMicorphoneVolume() / 150;
+		var lowThreshold = 0.3;
+		var modifiedVolume = 0;
+		if (volume > lowThreshold) {
+			modifiedVolume = (volume * 0.7 + lastVolume * 0.3);
+		} else {
+			modifiedVolume = lastVolume / 2;
+		}
+		audioElem.innerHTML = modifiedVolume;
+		lastVolume = modifiedVolume;
+
+	}, 10);
+
+	//toggle avatar visibility
+	function toggleAvatar(e) {
+		if (e.keyCode != 192) {
+			return;
+		};
+		var avatar = $("canvas#live2D");
+		if (avatar.hasClass("hidden")) {
+			avatar.removeClass("hidden");
+		} else {
+			avatar.addClass("hidden");
+		}
+	}
+</script>
+
+</html>

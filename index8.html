@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+
+    <title>HW8 詳解</title>
+
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+
+    <link rel="stylesheet" href="dist/theme/black.css" id="theme" />
+
+    <!-- Theme used for syntax highlighted code -->
+    <link
+      rel="stylesheet"
+      href="plugin/highlight/monokai.css"
+      id="highlight-theme"
+    />
+    <link rel="stylesheet" href="custom.css" />
+    <style>
+      canvas#live2D {
+        transition-property: opacity;
+        transition-duration: 0.3s;
+        pointer-events: none;
+        position: fixed !important;
+        bottom: 0;
+        right: -20px;
+        z-index: 999999;
+        opacity: 1;
+      }
+
+      canvas#live2D:hover {
+        transition-delay: 0.5s;
+      }
+
+      canvas#live2D.hidden,
+      canvas#live2D:hover {
+        transition-property: opacity;
+        transition-duration: 0.3s;
+        opacity: 0;
+      }
+    </style>
+
+    <!-- Pollyfill script -->
+    <script src="./anime/dist/core-minified.js"></script>
+    <!-- Live2DCubismCore script -->
+    <script src="./anime/core/live2dcubismcore.js"></script>
+    <!-- Build script -->
+    <script src="./anime/dist/bundle.js"></script>
+    <script src="./anime/custom.js"></script>
+  </head>
+
+  <body onkeydown="toggleAvatar(event)">
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h1>HW8 詳解</h1>
+        </section>
+        <!--Q1-->
+        <section>
+          <span class="subtle">Question 1</span>
+          <section data-auto-animate>
+            <h2>問題1</h2>
+            <h4>page 552, chapter 8.2 Exercise 26</h4>
+            <div class="question-block" data-id="question1">
+                What is the general form of the particular solution guaranteed to exist 
+                by Theorem 6 of the linear non-homogeneous recurrence relation 
+                $a_n = 6a_{n-1} - 12a_{n-2} + 8a_{n-3} + F(n)$ if
+                <ol class="alphaList">
+                    <li>$F(n) = n^2$ ?</li>
+                    <li>$F(n) = 2^n$ ?</li>
+                    <li>$F(n) = n2^n$ ?</li>
+                    <li>$F(n) = (-2)^n$ ?</li>
+                    <li>$F(n) = n^22^n$ ?</li>
+                    <li>$F(n) = n^3(-2)^n$ ?</li>
+                    <li>$F(n) = 3$ ?</li>
+                </ol>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <div class="question-block" data-id="question1">
+                What is the general form of the particular solution guaranteed to exist 
+                by Theorem 6 of the linear non-homogeneous recurrence relation 
+                $a_n = 6a_{n-1} - 12a_{n-2} + 8a_{n-3} + F(n)$ if
+                <ol class="alphaList">
+                    <li>$F(n) = n^2$ ?</li>
+                    <li>$F(n) = 2^n$ ?</li>
+                    <li>$F(n) = n2^n$ ?</li>
+                    <li>$F(n) = (-2)^n$ ?</li>
+                    <li>$F(n) = n^22^n$ ?</li>
+                    <li>$F(n) = n^3(-2)^n$ ?</li>
+                    <li>$F(n) = 3$ ?</li>
+                </ol>
+            </div>
+            <ol class="alphaList tiny-text">
+                <li>$p_2n^2 + p_1n + p_0$</li>
+                <li>$n^3p_02^n$</li>
+                <li>$n^3(p_1n + p_0)2^n$</li>
+                <li>$p_0(-2)^n$</li>
+                <li>$n^3(p_2n^2 + p_1n + p_0)2^n$</li>
+                <li>$(p_3n^3 + p_2n^2 + p_1n + p_0)(-2)^n$</li>
+                <li>$p_0$</li>
+            </ol>
+          </section>
+        </section>
+
+        <!--Q2-->
+        <section>
+          <span class="subtle">Question 2</span>
+          <section data-auto-animate>
+            <h2>問題2</h2>
+            <h4>page 552, chapter 8.2 Exercise 28</h4>
+            <div class="question-block" data-id="question2">
+                <ol class="alphaList">
+                    <li>Find all solutions of the recurrence relation $a_n = 2a_{n-1} + 2n^2$.</li>
+                    <li>Find the solution of the recurrence relation in part (a) with initial condition $a_1 = 4$.</li>
+                </ol>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <div class="question-block" data-id="question2">
+                <ol class="alphaList">
+                    <li>Find all solutions of the recurrence relation $a_n = 2a_{n-1} + 2n^2$.</li>
+                    <li>Find the solution of the recurrence relation in part (a) with initial condition $a_1 = 4$.</li>
+                </ol>
+            </div>
+            <ol class="alphaList tiny-text">
+                <li>
+                    The associated homogeneous recurrence relation is $a_n = 2a_{n-1}$. 
+                    We easily solve it to obtain $a_n^{(h)} = \alpha2^n$. 
+                    Next we need a particular solution to the given recurrence relation. 
+                    By Theorem 6 we want to look for a function of the form $a_n = p_2n^2 + p_1n + p_0$. 
+                    (Note that s = 1 here, and 1 is not a root of the characteristic polynomial.) 
+                    We plug this into our recurrence relation and obtain $p_2n^2 + p_1n + p_0 = 2(p_2(n-1)^2 + p_1(n-1) + p_0) + 2n^2$. 
+                    We rewrite this by grouping terms with equal powers of n, obtaining $(-p_2-2)n^2 + (4p_2-p_1)n + (-2p_2 + 2p_1-p_0) = 0$. 
+                    In order for this equation to be true for all n, we must have $p_2 = -2$, $4p_2 = p_1$, and $-2p_2 + 2p_1 - p_0 = 0$. 
+                    This tells us that $p_1 = -8$ and $p_0 = -12$. 
+                    Therefore the particular solution we seek is $a_n^{(p)} = -2n^2 - 8n - 12$. 
+                    So the general solution is the sum of the homogeneous solution and this particular solution, 
+                    namely $a_n = \underline{\alpha2^n - 2n^2 - 8n - 12}$.
+                </li>
+                <li>
+                    We plug the initial condition into our solution from part(a) to obtain $4 = a_1 = 2\alpha - 2 - 8 - 12$. 
+                    This tells us that $\alpha = \underline{13}$. So the solution is $a_n = 13\cdot2^n - 2n^2 - 8n - 12$.
+                </li>
+            </ol>
+          </section>
+        </section>
+
+        <!--Q3-->
+        <section>
+          <span class="subtle">Question 3</span>
+          <section data-auto-animate>
+            <h2>問題3</h2>
+            <h4>page 552, chapter 8.2 Exercise 30</h4>
+            <div class="question-block" data-id="question3">
+                <ol class="alphaList">
+                    <li>Find all solutions of the recurrence relation $a_n = -5a_{n-1} - 6a_{n-2} + 42 \cdot 4n$.</li>
+                    <li>Find the solution of this recurrence relation with $a_1 = 56$ and $a_2 = 278$.</li>
+                </ol>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <div class="question-block" data-id="question3">
+                <ol class="alphaList">
+                    <li>Find all solutions of the recurrence relation $a_n = -5a_{n-1} - 6a_{n-2} + 42 \cdot 4n$.</li>
+                    <li>Find the solution of this recurrence relation with $a_1 = 56$ and $a_2 = 278$.</li>
+                </ol>
+            </div>
+            <ol class="alphaList tiny-text">
+                <li>
+                    The associated homogeneous recurrence relation is $a_n = -5a_{n-1} - 6a_{n-2}$. 
+                    To solve it we find the characteristic equation $r^2 + 5r + 6 = 0$, 
+                    find that $r = -2$ and $r = -3$ are its solutions, 
+                    and therefore obtain the homogeneous solution $a_n^{(h)} = \alpha(-2)^n + \beta(-3)^n$. 
+                    Next we need a particular solution to the given recurrence relation. 
+                    By Theorem 6 we want to look for a function of the form $a_n = c\cdot4^n$. 
+                    We plug this into our recurrence relation and obtain $c\cdot4^n = -5c\cdot4^{n-1} - 6c\cdot4^{n-2} + 42\cdot4^n$. 
+                    We divide through by $4^{n-2}$, obtaining $16c = -20c - 6c + 42\cdot16$, whence with a little simple algebra $c = 16$. 
+                    Therefore the particular solution we seek is $a_n^{(p)} = 16\cdot4^n = 4^{n+2}$. 
+                    So the general solution is the sum of the homogeneous solution and this particular solution, 
+                    namely $a_n = \underline{\alpha(-2)^n + \beta(-3)^n + 4^{n+2}}$.
+                </li>
+                <li>
+                    We plug the initial conditions into our solution from part (a) to obtain 
+                    $56 = a_1 = -2\alpha - 3\beta + 64$ and $278 = a_2 = 4\alpha + 9\beta + 256$. 
+                    A little algebra yields $\alpha = \underline{1}$ and $\beta = \underline{2}$. 
+                    So the solution is $a_n = (-2)^n + 2(-3)^n + 4^{n+2}$.
+                </li>
+            </ol>
+          </section>
+        </section>
+
+        <!--Q4-->
+        <section>
+          <span class="subtle">Question 4</span>
+          <section data-auto-animate>
+            <h2>問題4</h2>
+            <h4>page 552, chapter 8.2 Exercise 32</h4>
+            <div class="question-block" data-id="question4">
+                Find the solution of the recurrence relation $a_n = 2a_{n-1} + 3 \cdot 2^n$.
+            </div>
+          </section>
+          <section data-auto-animate>
+            <h2>問題4</h2>
+            <h4>page 552, chapter 8.2 Exercise 32</h4>
+            <div class="question-block" data-id="question4">
+                Find the solution of the recurrence relation $a_n = 2a_{n-1} + 3 \cdot 2^n$.
+            </div>
+            <p class="tiny-text">
+                The associated homogeneous recurrence relation is $a_n = 2a_{n-1}$. <br>
+                We easily solve it to obtain $a_n^{(h)} = \alpha2^n$. <br>
+                Next we need a particular solution to the given recurrence relation. <br>
+                By Theorem 6 we want to look for a function of the form $a_n = cn \cdot 2^n$. <br>
+                We plug this into our recurrence relation and obtain $cn \cdot 2^n = 2c(n - 1)2^{n-1} + 3 \cdot 2^n$. <br>
+                We divide through by $2^{n-1}$, obtaining $2cn = 2c(n - 1) + 6$, whence with a little simple algebra $c = 3$. <br>
+                Therefore the particular solution we seek is $a_n^{(p)} = 3n\cdot2^n$. <br>
+                So the general solution is the sum of the homogeneous solution and this particular solution, <br>
+                namely $a_n = \underline{\alpha2^n + 3n \cdot 2^n = (3n + \alpha)2^n}$.
+            </p>
+          </section>
+        </section>
+
+        <!--Q5-->
+        <section>
+          <span class="subtle">Question 5</span>
+          <section data-auto-animate>
+            <h2>問題5</h2>
+            <h4>page 575, chapter 8.4 Exercise 4</h4>
+            <div class="question-block" data-id="question5">
+                Find a closed form for the generating function for each of these sequences. 
+                (Assume a general form for the terms of the sequence, using the most obvious choice of such a sequence.)
+                <ol class="alphaList">
+                    <li>$-1, -1, -1, -1, -1, -1, -1, 0, 0, 0, 0, 0, 0, ...$</li>
+                    <li>$1, 3, 9, 27, 81, 243, 729, ...$</li>
+                    <li>$0, 0, 3, -3, 3, -3, 3, -3, ...$</li>
+                    <li>$1, 2, 1, 1, 1, 1, 1, 1, 1, ...$</li>
+                    <li>$\dbinom{7}{0}, 2\dbinom{7}{1}, 2^2\dbinom{7}{2}, ..., 2^7\dbinom{7}{7}, 0, 0, 0, 0, ...$</li>
+                    <li>$-3, 3, -3, 3, -3, 3, ...$</li>
+                    <li>$0, 1, -2, 4, -8, 16, -32, 64, ...$</li>
+                    <li>$1, 0, 1, 0, 1, 0, 1, 0, ...$</li>
+                </ol>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <div class="question-block" data-id="question5">
+                Find a closed form for the generating function for each of these sequences. 
+                (Assume a general form for the terms of the sequence, using the most obvious choice of such a sequence.)
+                <ol class="alphaList">
+                    <li>$-1, -1, -1, -1, -1, -1, -1, 0, 0, 0, 0, 0, 0, ...$</li>
+                    <li>$1, 3, 9, 27, 81, 243, 729, ...$</li>
+                    <li>$0, 0, 3, -3, 3, -3, 3, -3, ...$</li>
+                    <li>$1, 2, 1, 1, 1, 1, 1, 1, 1, ...$</li>
+                    <li>$\dbinom{7}{0}, 2\dbinom{7}{1}, 2^2\dbinom{7}{2}, ..., 2^7\dbinom{7}{7}, 0, 0, 0, 0, ...$</li>
+                    <li>$-3, 3, -3, 3, -3, 3, ...$</li>
+                    <li>$0, 1, -2, 4, -8, 16, -32, 64, ...$</li>
+                    <li>$1, 0, 1, 0, 1, 0, 1, 0, ...$</li>
+                </ol>
+            </div>
+            <ol class="alphaList tiny-text">
+                <li>$f(x) = \underline{-(1 - x^7)/(1 - x)}$</li>
+                <li>$1/(1 - ax)$ with $a = \underline{3}$. Therefore the generating function is $1/(1 - \underline{3}x)$.</li>
+                <li>$\underline{3x^2(1 - x + x^2 - x^3 + ...) = 3x^2/(1 + x)}$</li>
+                <li>$\underline{x} + (1/(1 - x))$</li>
+                <li>$\underline{(1 + 2x)^7}$</li>
+                <li>$\underline{-3(1 - x + x^2 - x^3 + ...) = -3/(1 + x)}$</li>
+                <li>$\underline{x(1 - 2x + 4x^2 - 8x^3 + ...) = x/(1 + 2x)}$</li>
+                <li>$\underline{1/(1 - x^2)}$</li>
+            </ol>
+          </section>
+        </section>
+
+        <!--Q6-->
+        <section>
+          <span class="subtle">Question 6</span>
+          <section data-auto-animate>
+            <h2>問題6</h2>
+            <h4>page 576, chapter 8.4 Exercise 16</h4>
+            <div class="question-block" data-id="question6">
+                Use generating functions to find the number of ways to choose a dozen bagels from three varieties—
+                egg, salty, and plain—if at least two bagels of each kind but no more than three salty bagels are chosen.
+            </div>
+          </section>
+          <section data-auto-animate>
+            <h2>問題6</h2>
+            <h4>page 576, chapter 8.4 Exercise 16</h4>
+            <div class="question-block" data-id="question6">
+                Use generating functions to find the number of ways to choose a dozen bagels from three varieties—
+                egg, salty, and plain—if at least two bagels of each kind but no more than three salty bagels are chosen.
+            </div>
+            <p class="tiny-text">
+                The factors in the generating function for choosing the egg and plain bagels are both $x^2 + x^3 + x^4 + ...$. <br>
+                The factor for choosing the salty bagels is $x^2 + x^3$. <br>
+                Therefore the generating function for this problem is $(x^2 + x^ + x^4 + ...)^2(x^2 + x^3)$. <br>
+                We want to find the coefficient of $x^{12}$, since we want 12 bagels. <br>
+                This is equivalent to finding the coefficient of $x^6$ in $(1 + x + x^2 + ...)^2(1 + x)$. <br>
+                This function is $(1 + x)/(1 - x)^2$, so we want the coefficient of $x^6$ in $1/(1 - x)^2$, <br>
+                which is $\underline{7}$, plus the coefficient of $x^5$ in $1/(1 - x)^2$ , which is $\underline{6}$. <br>
+                Thus the answer is $\underline{13}$.
+            </p>
+          </section>
+        </section>
+
+        <!--Q7-->
+        <section>
+          <span class="subtle">Question 7</span>
+          <section data-auto-animate>
+            <h2>問題7</h2>
+            <h4>page 576, chapter 8.4 Exercise 18</h4>
+            <div class="question-block" data-id="question7">
+                Use generating functions to find the number of ways to select 14 balls from a jar containing 
+                100 red balls, 100 blue balls, and 100 green balls 
+                so that no fewer than 3 and no more than 10 blue balls are selected. 
+                Assume that the order in which the balls are drawn does not matter.
+            </div>
+          </section>
+          <section data-auto-animate>
+            <h2>問題7</h2>
+            <h4>page 576, chapter 8.4 Exercise 18</h4>
+            <div class="question-block" data-id="question7">
+                Use generating functions to find the number of ways to select 14 balls from a jar containing 
+                100 red balls, 100 blue balls, and 100 green balls 
+                so that no fewer than 3 and no more than 10 blue balls are selected. 
+                Assume that the order in which the balls are drawn does not matter.
+            </div>
+            <p class="tiny-text">
+                Without changing the answer, we can assume that the jar has <br>
+                an infinite number of balls of each color; this will make the algebra easier. <br>
+                For the red and green balls the generating function is $1 + x + x^2 + ...$, <br>
+                but for the blue balls the generating function is $x^3 + x^4 + ...+ x^{10}$, <br>
+                so the generating function for the whole problem is $(1 + x + x^2 + ...)^2(x^3 + x^4 + ...+ x^{10})$. <br>
+                We seek the coefficient of $x^{14}$. This is the same as the coefficient of $x^{11}$ in
+                \begin{eqnarray*}
+                    (1 + x + x^2 + ...)^2(1 + x + ...+ x^7) = \frac{1 - x^8}{(1-x)^3}
+                \end{eqnarray*}
+                Since the coefficient of $x^n$ in $1/(1 - x)^3$ is $C(n + 2, 2)$, <br>
+                and we have two contributing terms determined by the numerator, <br>
+                our answer is $\underline{C(11 + 2, 2) - C(3 + 2, 2) = 68}$.
+            </p>
+          </section>
+        </section>
+
+        <!--Q8-->
+        <section>
+          <span class="subtle">Question 8</span>
+          <section data-auto-animate>
+            <h2>問題8</h2>
+            <h4>page 576, chapter 8.4 Exercise 24</h4>
+            <div class="question-block" data-id="question8">
+                <ol class="alphaList">
+                    <li>What is the generating function for {$a_k$}, where $a_k$ is the number of solutions of $x_1 + x_2 + x_3 + x_4 = k$ when $x_1$, $x_2$, $x_3$, and $x_4$ are integers with $x_1 \ge 3$, $1 \le x2 \le 5$, $0 \le x3 \le 4$, and $x4 \ge 1$?</li>
+                    <li>Use your answer to part (a) to find $a_7$.</li>
+                </ol>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <div class="question-block" data-id="question8">
+                <ol class="alphaList">
+                    <li>What is the generating function for {$a_k$}, where $a_k$ is the number of solutions of $x_1 + x_2 + x_3 + x_4 = k$ when $x_1$, $x_2$, $x_3$, and $x_4$ are integers with $x_1 \ge 3$, $1 \le x2 \le 5$, $0 \le x3 \le 4$, and $x4 \ge 1$?</li>
+                    <li>Use your answer to part (a) to find $a_7$.</li>
+                </ol>
+            </div>
+            <ol class="alphaList tiny-text">
+                <li>
+                    The restriction on $x_1$ gives us the factor $x^3 + x^4 + x^5 + ...$. 
+                    The restriction on $x_2$ gives us the factor $x + x^2 + x^3 + x^4 + x^5$. 
+                    The restriction on $x_3$ gives us the factor $1 + x + x^2 + x^3 + x^4$ . 
+                    And the restriction on $x_4$ gives us the factor $x + x^2 + x^3 + ...$. 
+                    Thus the answer is the product of these:
+                    \begin{eqnarray*}
+                        \underline{(x^3 + x^4 + x^5 + ...)(x + x^2 + x^3 + x^4 + x^5)(1 + x + x^2 + x^3 + x^4)(x + x^2 + x^3 + ...)}
+                    \end{eqnarray*}
+                    We can use algebra to rewrite this in closed form as $x^5(1 + x + x^2 + x^3 + x^4)^2/(1 - x)^2$.
+                </li>
+                <li>
+                    We want the coefficient of $x^7$ in this series, 
+                    which is the same as the coefficient of $x^2$ in the series for
+                    \begin{eqnarray*}
+                        \frac{(1 + x + x^2 + x^3 + x^4)^2}{(1 - x)^2} = \frac{1+2x+3x^2+higher\ order\ terms}{(1 - x)^2}
+                    \end{eqnarray*}
+                    Since the coefficient of $x^n$ in $1/(1 - x)^2$ is n + 1, 
+                    our answer is $1 \cdot 3 + 2 \cdot 2 + 3 \cdot 1 = \underline{10}$.
+                </li>
+            </ol>
+          </section>
+        </section>
+
+        <!--Q9-->
+        <section>
+            <span class="subtle">Question 9</span>
+            <section data-auto-animate>
+              <h2>問題9</h2>
+              <h4>page 577, chapter 8.4 Exercise 34</h4>
+              <div class="question-block" data-id="question9">
+                Use generating functions to solve the recurrence relation $a_k = 7a_{k-1}$ with the initial condition $a_0 = 5$.
+              </div>
+            </section>
+            <section data-auto-animate>
+              <h2>問題9</h2>
+              <h4>page 577, chapter 8.4 Exercise 34</h4>
+              <div class="question-block" data-id="question9">
+                Use generating functions to solve the recurrence relation $a_k = 7a_{k-1}$ with the initial condition $a_0 = 5$.
+              </div>
+              <p class="tiny-text">
+                This problem is like Example 16. First let $G(x) = \sum\limits_{k=0}^\infty a_kx^k$. <br>
+                Then $xG(x) = \sum\limits_{k=0}^\infty a_kx^{k+1} = \sum\limits_{k=1}^\infty a_{k-1}x^k$ <br>
+                (by changing the name of the variable from k to k + 1 ). Thus <br>
+                \begin{eqnarray*}
+                    G(x) - 7xG(x) 
+                    & = & \sum\limits_{k=0}^\infty a_kx^k - \sum\limits_{k=1}^\infty 7a_{k-1}x^k \\
+                    ~ & = & a_0 + \sum\limits_{k=1}^\infty (a_k - 7a_{k-1})x^k \\
+                    ~ & = & a_0 + 0 \\
+                    ~ & = & 5,
+                \end{eqnarray*}
+                because of the given recurrence relation and initial condition. <br>
+                Thus $G(x)(1 - 7x) = 5$, so $G(x) = \underline{5/(1-7x)}$. <br>
+                From Table 1 we know then that $a_k = \underline{5 \cdot 7^k}$.
+              </p>
+            </section>
+        </section>
+
+        <!--Q10-->
+        <section>
+            <span class="subtle">Question 10</span>
+            <section data-auto-animate>
+              <h2>問題10</h2>
+              <h4>page 577, chapter 8.4 Exercise 36</h4>
+              <div class="question-block" data-id="question9">
+                Use generating functions to solve the recurrence relation $a_k = 3a_{k-1} + 4^{k-1}$ with the initial condition $a_0 = 1$.
+              </div>
+            </section>
+            <section data-auto-animate>
+              <div class="question-block" data-id="question9">
+                Use generating functions to solve the recurrence relation $a_k = 3a_{k-1} + 4^{k-1}$ with the initial condition $a_0 = 1$.
+              </div>
+              <p class="tiny-text even-tinier">
+                Let $G(x) = \sum\limits_{k=0}^\infty a_kx^k$. 
+                Then $xG(x) = \sum\limits_{k=0}^\infty a_kx^{k+1} = \sum\limits_{k=1}^\infty a_{k-1}x^k$ <br>
+                (by changing the name of the variable from k to k + 1 ). Thus <br>
+                \begin{eqnarray*}
+                    G(x) - 3xG(x) 
+                    & = & \sum\limits_{k=0}^\infty a_kx^k - \sum\limits_{k=1}^\infty 3a_{k-1}x^k \\
+                    ~ & = & a_0 + \sum\limits_{k=1}^\infty (a_k - 3a_{k-1})x^k \\
+                    ~ & = & 1 + \sum\limits_{k=1}^\infty 4^{k-1}x^k \\
+                    ~ & = & 1 + x\sum\limits_{k=1}^\infty 4^{k-1}x^{k-1} \\
+                    ~ & = & 1 + x\sum\limits_{k=0}^\infty 4^kx^k \\
+                    ~ & = & 1 + x \cdot \frac{1}{1-4x} \\
+                    ~ & = & \frac{1-3x}{1-4x}.
+                \end{eqnarray*}
+                Thus $G(x)(1 - 3x) = (1 - 3x)/(1 - 4x)$, so $G(x) = \underline{1/(1-4x)}$. <br>
+                Therefore $a_k = \underline{4^k}$, from Table 1.
+              </p>
+            </section>
+        </section>
+
+
+
+
+
+
+
+
+
+      </div>
+    </div>
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/math/math.js"></script>
+    <script>
+      function getPath() {
+        var path = '';
+        nodes = window.location.pathname.split('/');
+        for (var index = 0; index < nodes.length - 3; index++) {
+          path += '../';
+        }
+        return path;
+      }
+
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+        math: {
+          mathjax:
+            'https://cdn.jsdelivr.net/gh/mathjax/mathjax@2.7.8/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          // pass other options into `MathJax.Hub.Config()`
+          TeX: {
+            Macros: {
+              RR: '{\\bf R}',
+            },
+          },
+        },
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath],
+        dependencies: [
+          {
+            src: 'plugin/math/math.js',
+            async: true,
+          },
+        ],
+      });
+
+      Reveal.on('autoanimate', event => {
+        setTimeout(function () {
+          removeAllAutoAnimates(event.toSlide);
+        }, Reveal.getConfig().autoAnimateDuration * 1000);
+      });
+
+      function removeAllAutoAnimates(element) {
+        try {
+          element.removeAttribute('data-auto-animate-target');
+          element.childNodes.forEach(element => {
+            removeAllAutoAnimates(element);
+          });
+        } catch {}
+      }
+    </script>
+
+    <div style="display: none" id="audio"></div>
+  </body>
+  <script>
+    // LIPSYNC
+    var audioElem = document.getElementById('audio');
+    var modifier = 150;
+    var lastVolume = 0;
+    setInterval(() => {
+      var volume = getMicorphoneVolume() / 150;
+      var lowThreshold = 0.3;
+      var modifiedVolume = 0;
+      if (volume > lowThreshold) {
+        modifiedVolume = volume * 0.7 + lastVolume * 0.3;
+      } else {
+        modifiedVolume = lastVolume / 2;
+      }
+      audioElem.innerHTML = modifiedVolume;
+      lastVolume = modifiedVolume;
+    }, 10);
+
+    //toggle avatar visibility
+    function toggleAvatar(e) {
+      if (e.keyCode != 192) {
+        return;
+      }
+      var avatar = $('canvas#live2D');
+      if (avatar.hasClass('hidden')) {
+        avatar.removeClass('hidden');
+      } else {
+        avatar.addClass('hidden');
+      }
+    }
+  </script>
+</html>

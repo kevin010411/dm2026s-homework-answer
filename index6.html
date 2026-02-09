@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+
+    <title>HW6 詳解</title>
+
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+
+    <link rel="stylesheet" href="dist/theme/black.css" id="theme" />
+
+    <!-- Theme used for syntax highlighted code -->
+    <link
+      rel="stylesheet"
+      href="plugin/highlight/monokai.css"
+      id="highlight-theme"
+    />
+    <link rel="stylesheet" href="custom.css" />
+    <style>
+      canvas#live2D {
+        transition-property: opacity;
+        transition-duration: 0.3s;
+        pointer-events: none;
+        position: fixed !important;
+        bottom: 0;
+        right: -20px;
+        z-index: 999999;
+        opacity: 1;
+      }
+
+      canvas#live2D:hover {
+        transition-delay: 0.5s;
+      }
+
+      canvas#live2D.hidden,
+      canvas#live2D:hover {
+        transition-property: opacity;
+        transition-duration: 0.3s;
+        opacity: 0;
+      }
+    </style>
+
+    <!-- Pollyfill script -->
+    <script src="./anime/dist/core-minified.js"></script>
+    <!-- Live2DCubismCore script -->
+    <script src="./anime/core/live2dcubismcore.js"></script>
+    <!-- Build script -->
+    <script src="./anime/dist/bundle.js"></script>
+    <script src="./anime/custom.js"></script>
+  </head>
+
+  <body onkeydown="toggleAvatar(event)">
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h1>HW6 詳解</h1>
+        </section>
+        <!--Q1-->
+        <section>
+          <span class="subtle">Question 1</span>
+          <section data-auto-animate>
+            <h2>問題1</h2>
+            <h4>page 418, chapter 6.1 Exercise 36</h4>
+            <div class="question-block" data-id="question1">
+                How many functions are there from the set {1, 2, ... , n},<br>
+                where n is a positive integer, to the set {0, 1}?
+            </div>
+          </section>
+          <section data-auto-animate>
+            <h2>問題1</h2>
+            <h4>page 418, chapter 6.1 Exercise 36</h4>
+            <div class="question-block" data-id="question1">
+                How many functions are there from the set {1, 2, ... , n},<br>
+                where n is a positive integer, to the set {0, 1}?
+            </div>
+            <p class="tiny-text">
+                There are <span class="fragment highlight-red">$2^n$</span> such functions, since there is a choice of 2 <br>
+                function values for each element of the domain.
+            </p>
+          </section>
+        </section>
+
+        <!--Q2-->
+        <section>
+            <span class="subtle">Question 2</span>
+            <section data-auto-animate>
+              <h2>問題2</h2>
+              <h4>page 444, chapter 6.4 Exercise 10</h4>
+              <div class="question-block" data-id="question2">
+                Use the binomial theorem to expand $(3x - y^2)^4$ into a sum
+                of terms of the form $cx^ay^b$, where c is a real number and
+                a and b are nonnegative integers.
+              </div>
+            </section>
+            <section data-auto-animate>
+              <h2>問題2</h2>
+              <h4>page 444, chapter 6.4 Exercise 10</h4>
+              <div class="question-block" data-id="question2">
+                Use the binomial theorem to expand $(3x - y^2)^4$ into a sum
+                of terms of the form $cx^ay^b$, where c is a real number and
+                a and b are nonnegative integers.
+              </div>
+              <img src="img/ch6/HW06_2.jpg" alt="" />
+            </section>
+        </section>
+
+        <!--Q3-->
+        <section>
+          <span class="subtle">Question 3</span>
+          <section data-auto-animate>
+            <h2>問題3</h2>
+            <h4>page 455, chapter 6.5 Exercise 14</h4>
+            <div class="question-block" data-id="question3">
+              How many solutions are there to the equation
+              \begin{eqnarray*}
+                  x_1 + x_2 + x_3 + x_4 = 17,
+              \end{eqnarray*}
+              where $x_1$, $x_2$, $x_3$, and $x_4$ are nonnegative integers?
+            </div>
+          </section>
+          <section data-auto-animate>
+            <h2>問題3</h2>
+            <h4>page 455, chapter 6.5 Exercise 14</h4>
+            <div class="question-block" data-id="question3">
+              How many solutions are there to the equation
+              \begin{eqnarray*}
+                  x_1 + x_2 + x_3 + x_4 = 17,
+              \end{eqnarray*}
+              where $x_1$, $x_2$, $x_3$, and $x_4$ are nonnegative integers?
+            </div>
+            <div class="tiny-text">
+              \begin{eqnarray*}
+                C(\underline{4} + \underline{17} - 1, \underline{17}) = C(20, \underline{17}) = \underline{1140}
+              \end{eqnarray*}
+            </div>
+          </section>
+        </section>
+
+        <!--Q4-->
+        <section>
+          <span class="subtle">Question 4</span>
+          <section data-auto-animate>
+            <h2>問題4</h2>
+            <h4>page 455, chapter 6.5 Exercise 16</h4>
+            <div class="question-block" data-id="question4">
+              How many solutions are there to the equation
+              \begin{eqnarray*}
+                  x_1 + x_2 + x_3 + x_4 + x_5+ x_6= 29,
+              \end{eqnarray*}
+              where $x_i$, $i$ = 1, 2, 3, 4, 5, 6, is a nonnegative integer such that <br>
+              <ol class="alphaList">
+                <li>$x_i > 1$ for $i$ = 1, 2, 3, 4, 5, 6 ?</li>
+                <li>$x_1 \ge 1$, $x_2 \ge 2$, $x_3 \ge 3$, $x_4 \ge 4$, $x_5 > 5$, and $x_6 \ge 6$ ?</li>
+                <li>$x_1 \le 5$ ?</li>
+                <li>$x_1 < 8$ and $x_2 > 8$ ?</li>
+              </ol>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <div class="question-block" data-id="question4">
+              How many solutions are there to the equation
+              \begin{eqnarray*}
+                  x_1 + x_2 + x_3 + x_4 + x_5+ x_6= 29,
+              \end{eqnarray*}
+              where $x_i$, $i$ = 1, 2, 3, 4, 5, 6, is a nonnegative integer such that <br>
+              <ol class="alphaList">
+                <li>$x_i > 1$ for $i$ = 1, 2, 3, 4, 5, 6 ?</li>
+                <li>$x_1 \ge 1$, $x_2 \ge 2$, $x_3 \ge 3$, $x_4 \ge 4$, $x_5 > 5$, and $x_6 \ge 6$ ?</li>
+                <li>$x_1 \le 5$ ?</li>
+                <li>$x_1 < 8$ and $x_2 > 8$ ?</li>
+              </ol>
+            </div>
+            <ol class="alphaList tiny-text">
+              <li>We require each $x_i \ge 2$ . This uses up 12 of the 29 total required, so the problem is the same as finding the number of solutions to $x'_1 + x'_2 + x'_3 + x'_4 + x'_5 + x'_6 = 17$ with each $x'_i$ a nonnegative integer. The number of solutions is therefore <span class="fragment highlight-red">$C(6 + 17 - 1, 17) = C(22, 17) = 26334$</span>.</li>
+              <li>The restrictions use up 22 of the total, leaving a free total of 7. Therefore the answer is <span class="fragment highlight-red">$C(6 + 7 - 1, 7) = C(12, 7) = 792$</span>.</li>
+              <li>The number of solutions without restriction is <span class="fragment highlight-red">$C(6 + 29 - 1, 29) = C(34, 29) = 278256$</span>. The number of solution violating the restriction by having $x_1 \ge 6$ is <span class="fragment highlight-red">$C(6 + 23 - 1, 23) = C(28, 23) = 98280$</span>. Therefore the answer is <span class="fragment highlight-red">$278256 - 98280 = 179976$</span>.</li>
+              <li>The number of solutions with $x_2 \ge 9$ (as required) but without the restriction on $x_1$ is <span class="fragment highlight-red">$C(6 + 20 - 1, 20) = C(25, 20) = 53130$</span>. The number of solution violating the additional restriction by having $x_1 \ge 8$ is<span class="fragment highlight-red">$C(6 + 12 - 1, 12) = C(17, 12) = 6188$</span>. Therefore the answer is <span class="fragment highlight-red">$53130 - 6188 = 46942$</span>.</li>
+            </ol>
+          </section>
+        </section>
+
+        <!--Q5-->
+        <section>
+          <span class="subtle">Question 5</span>
+          <section data-auto-animate>
+            <h2>問題5</h2>
+            <h4>page 455, chapter 6.5 Exercise 20</h4>
+            <div class="question-block" data-id="question5">
+              How many solutions are there to the inequality
+              \begin{eqnarray*}
+                  x_1 + x_2 + x_3 \le 11,
+              \end{eqnarray*}
+              where $x_1$, $x_2$, and $x_3$ are nonnegative integers?
+              [Hint: Introduce an auxiliary variable $x_4$ such that $x_1 + x_2 + x_3 + x_4 = 11$.]
+            </div>
+          </section>
+          <section data-auto-animate>
+            <h2>問題5</h2>
+            <h4>page 455, chapter 6.5 Exercise 20</h4>
+            <div class="question-block" data-id="question5">
+              How many solutions are there to the inequality
+              \begin{eqnarray*}
+                  x_1 + x_2 + x_3 \le 11,
+              \end{eqnarray*}
+              where $x_1$, $x_2$, and $x_3$ are nonnegative integers?
+              [Hint: Introduce an auxiliary variable $x_4$ such that $x_1 + x_2 + x_3 + x_4 = 11$.]
+            </div>
+            <div class="tiny-text">
+              \begin{eqnarray*}
+                C(\underline{4} + \underline{11} - 1, \underline{11}) = C(14, \underline{11}) = \underline{364}
+              \end{eqnarray*}
+            </div>
+          </section>
+        </section>
+
+        <!--Q6-->
+        <section>
+          <span class="subtle">Question 6</span>
+          <section data-auto-animate>
+            <h2>問題6</h2>
+            <h4>page 457, chapter 6.5 Exercise 64</h4>
+            <div class="question-block" data-id="question6">
+              How many different terms are there in the expansion of
+              \begin{eqnarray*}
+                  (x_1 + x_2 + ... + x_m)^n
+              \end{eqnarray*}
+              after all terms with identical sets of exponents are added?
+            </div>
+          </section>
+          <section data-auto-animate>
+            <h2>問題6</h2>
+            <h4>page 457, chapter 6.5 Exercise 64</h4>
+            <div class="question-block" data-id="question6">
+              How many different terms are there in the expansion of
+              \begin{eqnarray*}
+                  (x_1 + x_2 + ... + x_m)^n
+              \end{eqnarray*}
+              after all terms with identical sets of exponents are added?
+            </div>
+            <div class="tiny-text">
+              Each term must be of the form $Cx_1^{n_1} x_2^{n_2} ... x_m^{n_m}$, <br>
+              where the $n_i$'s are nonnegative integers whose sum is n. <br>
+              The number of ways to specify a term, then, <br>
+              is the number of nonnegative integer solutions to $n_1 +n_2 + ... +n_m = n$, <br>
+              which by Theorem 2 is <span class="fragment highlight-red">$C(m + n - 1, n)$</span>. <br>
+              Note that the coefficients C for these terms can be computed using Theorem 3—see Exercise 65.
+            </div>
+          </section>
+        </section>
+
+
+        <!--Q7-->
+        <section>
+          <span class="subtle">Question 7</span>
+          <section data-auto-animate>
+            <h2>問題7</h2>
+            <h4>page 457, chapter 6.5 Exercise 68</h4>
+            <div class="question-block" data-id="question7">
+              How many terms are there in the expansion of
+              \begin{eqnarray*}
+                  (x + y + z)^{100} ?
+              \end{eqnarray*}
+            </div>
+          </section>
+          <section data-auto-animate>
+            <h2>問題7</h2>
+            <h4>page 457, chapter 6.5 Exercise 68</h4>
+            <div class="question-block" data-id="question7">
+              How many terms are there in the expansion of
+              \begin{eqnarray*}
+                  (x + y + z)^{100} ?
+              \end{eqnarray*}
+            </div>
+            <div class="tiny-text">
+              By Exercise 64, the answer is 
+              \begin{eqnarray*}
+                C(\underline{3} + \underline{100} - 1, \underline{100}) = C(102, \underline{100}) = \underline{5151}
+              \end{eqnarray*}
+            </div>
+          </section>
+        </section>
+
+
+
+
+
+      </div>
+    </div>
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/math/math.js"></script>
+    <script>
+      function getPath() {
+        var path = '';
+        nodes = window.location.pathname.split('/');
+        for (var index = 0; index < nodes.length - 3; index++) {
+          path += '../';
+        }
+        return path;
+      }
+
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+        math: {
+          mathjax:
+            'https://cdn.jsdelivr.net/gh/mathjax/mathjax@2.7.8/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          // pass other options into `MathJax.Hub.Config()`
+          TeX: {
+            Macros: {
+              RR: '{\\bf R}',
+            },
+          },
+        },
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath],
+        dependencies: [
+          {
+            src: 'plugin/math/math.js',
+            async: true,
+          },
+        ],
+      });
+
+      Reveal.on('autoanimate', event => {
+        setTimeout(function () {
+          removeAllAutoAnimates(event.toSlide);
+        }, Reveal.getConfig().autoAnimateDuration * 1000);
+      });
+
+      function removeAllAutoAnimates(element) {
+        try {
+          element.removeAttribute('data-auto-animate-target');
+          element.childNodes.forEach(element => {
+            removeAllAutoAnimates(element);
+          });
+        } catch {}
+      }
+    </script>
+
+    <div style="display: none" id="audio"></div>
+  </body>
+  <script>
+    // LIPSYNC
+    var audioElem = document.getElementById('audio');
+    var modifier = 150;
+    var lastVolume = 0;
+    setInterval(() => {
+      var volume = getMicorphoneVolume() / 150;
+      var lowThreshold = 0.3;
+      var modifiedVolume = 0;
+      if (volume > lowThreshold) {
+        modifiedVolume = volume * 0.7 + lastVolume * 0.3;
+      } else {
+        modifiedVolume = lastVolume / 2;
+      }
+      audioElem.innerHTML = modifiedVolume;
+      lastVolume = modifiedVolume;
+    }, 10);
+
+    //toggle avatar visibility
+    function toggleAvatar(e) {
+      if (e.keyCode != 192) {
+        return;
+      }
+      var avatar = $('canvas#live2D');
+      if (avatar.hasClass('hidden')) {
+        avatar.removeClass('hidden');
+      } else {
+        avatar.addClass('hidden');
+      }
+    }
+  </script>
+</html>

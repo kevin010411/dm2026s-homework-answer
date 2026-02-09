@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+
+    <title>HW13 詳解</title>
+
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+
+    <link rel="stylesheet" href="dist/theme/black.css" id="theme" />
+
+    <!-- Theme used for syntax highlighted code -->
+    <link
+      rel="stylesheet"
+      href="plugin/highlight/monokai.css"
+      id="highlight-theme"
+    />
+    <link rel="stylesheet" href="custom.css" />
+    <style>
+      canvas#live2D {
+        transition-property: opacity;
+        transition-duration: 0.3s;
+        pointer-events: none;
+        position: fixed !important;
+        bottom: 0;
+        right: -20px;
+        z-index: 999999;
+        opacity: 1;
+      }
+
+      canvas#live2D:hover {
+        transition-delay: 0.5s;
+      }
+
+      canvas#live2D.hidden,
+      canvas#live2D:hover {
+        transition-property: opacity;
+        transition-duration: 0.3s;
+        opacity: 0;
+      }
+    </style>
+
+    <!-- Pollyfill script -->
+    <script src="./anime/dist/core-minified.js"></script>
+    <!-- Live2DCubismCore script -->
+    <script src="./anime/core/live2dcubismcore.js"></script>
+    <!-- Build script -->
+    <script src="./anime/dist/bundle.js"></script>
+    <script src="./anime/custom.js"></script>
+  </head>
+
+  <body onkeydown="toggleAvatar(event)">
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h1>HW13 詳解</h1>
+        </section>
+        <!--Q1-->
+        <section>
+          <span class="subtle">Question 1</span>
+          <section data-auto-animate>
+            <h2>問題1</h2>
+            <h4>page 895, chapter 13.1 Exercise 18</h4>
+            <div class="question-block" data-id="question1">
+              <span data-id="q1-1">
+                Construct phrase-structure grammars to generate each of these sets.
+              </span>
+              <ol class="alphaList">
+                <li>{ $01^{2n}$ | $n\geq0$ }</li>
+                <li>{ $0^n1^{2n}$ | $n\geq0$ }</li>
+                <li>{ $0^n1^m0^n$ | $m\geq0$ and $n\geq0$ }</li>
+              </ol>
+            </div>
+          </section>
+
+          <!--Q1(A)sol-->
+          <section data-auto-animate>
+            <h4>問題1(A): page 895, chapter 13.1 Exercise 18(A)</h4>
+            <div class="question-block" data-id="question1">
+              <span data-id="q1-1">
+                Construct phrase-structure grammars to generate each of these sets.
+              </span>
+              <ol class="alphaList">
+                <li>{ $01^{2n}$ | $n\geq0$ }</li>
+              </ol>
+            </div>
+            <div class="tiny-text">
+              <div class="fragment" data-fragment-index="0">
+                <ul>
+                  a)&nbsp; We want exactly one 0 and an even number of 1's to its right. 
+                  Thus we can use the rules 
+                  <span class="fragment highlight-red" data-fragment-index="1">
+                    $S \to 0A$, $A \to 11A$, and $A \to \lambda$
+                  </span>.
+                </ul>
+                <img src="img/ch13/handwrite/Q1(A).PNG" alt="" width="40%" height="40%"/><br>
+              </div>
+            </div>
+          </section>
+
+          <!--Q1(B)sol-->
+          <section data-auto-animate>
+            <h4>問題1(B): page 895, chapter 13.1 Exercise 18(B)</h4>
+            <div class="question-block" data-id="question1">
+              <span data-id="q1-1">
+                Construct phrase-structure grammars to generate each of these sets.<br>
+              </span>
+              <ul>
+                b)&nbsp; { $0^n1^{2n}$ | $n\geq0$ }
+              </ul>
+            </div>
+            <div class="tiny-text">
+              <div class="fragment" data-fragment-index="0">
+                <ul>
+                  b)&nbsp; We can have the new symbols grow out from the center, using the rules 
+                  <span class="fragment highlight-red" data-fragment-index="1">
+                    $S \to 0S11$ and $S \to \lambda$
+                  </span>.
+                </ul>
+                <img src="img/ch13/handwrite/Q1(B).PNG" alt="" width="30%" height="30%"/><br>
+              </div>
+            </div>
+          </section>
+
+          <!--Q1(C)sol-->
+          <section data-auto-animate>
+            <h4>問題1(C): page 895, chapter 13.1 Exercise 18(C)</h4>
+            <div class="question-block" data-id="question1">
+              <span data-id="q1-1">
+                Construct phrase-structure grammars to generate each of these sets.<br>
+              </span>
+              <ul>
+                c)&nbsp; { $0^n1^m0^n$ | $m\geq0$ and $n\geq0$ }
+              </ul>
+            </div>
+            <div class="tiny-text">
+              <div class="fragment" data-fragment-index="0">
+                <ul>
+                  c)&nbsp; We can have the 0's grow out from the center, and then have the center turn into a 1-making machine. 
+                  The rules we propose are 
+                  <span class="fragment highlight-red" data-fragment-index="1">
+                    $S \to 0S0$, $S \to A$, $A \to 1A$, and $A \to \lambda$
+                  </span>.
+                </ul>
+                <img src="img/ch13/handwrite/Q1(C).PNG" alt="" width="40%" height="40%"/><br>
+              </div>
+            </div>
+          </section>
+        </section>
+
+
+        <!--Q2-->
+        <section>
+          <span class="subtle">Question 2</span>
+          <section data-auto-animate>
+            <h2>問題2</h2>
+            <h4>page 895, chapter 13.1 Exercise 20</h4>
+            <div class="question-block" data-id="question2">
+              <span data-id="q2-1">
+                A <b>palindrome</b> is a string that reads the same backward as it does forward, that is,
+                 a string w, where w = $w^R$, where $w^R$ is the reversal of the string w. 
+                 Find a context-free grammar that generates the set of all palindromes over the alphabet { 0, 1 }.
+              </span>
+            </div>
+          </section>
+          <!--Q2sol-->
+          <section data-auto-animate>
+            <h4>問題2: page 895, chapter 13.1 Exercise 20</h4>
+            <div class="question-block" data-id="question2">
+              <span data-id="q2-1">
+                <span class="fragment highlight-yellow" data-fragment-index="1">
+                  A <b>palindrome</b> is a string that reads the same backward as it does forward
+                </span>
+                , that is, a string w, where w = $w^R$, where $w^R$ is the reversal of the string w. 
+                 Find a context-free grammar that generates the set of all palindromes over the alphabet { 0, 1 }.
+              </span>
+            </div>
+            <div class="tiny-text">
+              <img src="img/ch13/handwrite/Q2_1.jpg" /><br>
+            </div>
+          </section>
+
+          <section data-auto-animate>
+            <h4>問題2: page 895, chapter 13.1 Exercise 20</h4>
+            <div class="question-block" data-id="question2">
+              <span data-id="q2-1">
+                <span style="color:yellow;">
+                  A <b>palindrome</b> is a string that reads the same backward as it does forward
+                </span>
+                , that is, a string w, where w = $w^R$, where $w^R$ is the reversal of the string w. 
+                 Find a context-free grammar that generates the set of all palindromes over the alphabet { 0, 1 }.
+              </span>
+            </div>
+            <div class="tiny-text">
+              <div class="fragment" data-fragment-index="1">
+                We can simply have identical symbols grow out from the center, with an optional final symbol 
+                in the center itself. Thus we use the rules 
+                <span class="fragment highlight-red" data-fragment-index="2">
+                  $S \to 0S0$, $S \to 1S1$,
+                </span>
+                <span class="fragment highlight-red" data-fragment-index="3">
+                  $S \to \lambda$, $S \to 0$, and $S \to 1$
+                </span>
+                . Note that this grammar is context-free since each left-hand side is a single nonterminal symbol.<br>
+                <img src="img/ch13/handwrite/Q2_2.PNG" alt="" width="50%" height="50%"/><br>
+              </div>
+            </div>
+          </section>
+        </section>
+
+
+        <!--Q3(a)-->
+        <section>
+          <span class="subtle">Question 3(a)</span>
+          <section data-auto-animate>
+            <h2>問題3(a)</h2>
+            <h4>page 896, chapter 13.1 Exercise 28(a)</h4>
+            <div class="question-block" data-id="question3">
+              <span data-id="q3-1">
+                <ol class="alphaList">
+                    <li>
+                        Explain what the productions are in a grammar if the Backus–Naur form for productions is as follows:
+                        \begin{eqnarray*}
+                            \langle expression \rangle &::=& (\langle expression \rangle) ~|\\
+                            && \langle expression \rangle + \langle expression \rangle ~|\\
+                            && \langle expression \rangle \ast \langle expression \rangle ~|\\
+                            && \langle variable \rangle\\
+                            \langle variable \rangle &::=& x~|~y
+                        \end{eqnarray*}
+                    </li>
+                </ol>
+              </span>
+            </div>
+          </section>
+
+          <!--Q3(A)sol-->
+          <section data-auto-animate>
+            <h4>問題3(a):page 896, chapter 13.1 Exercise 28(a)</h4>
+            <div class="question-block" data-id="question3">
+                <span data-id="q3-1">
+                    <ol class="alphaList">
+                        <li>
+                            Explain what the productions are in a grammar if the Backus–Naur form for productions is as follows:
+                            \begin{eqnarray*}
+                                \langle expression \rangle &::=& (\langle expression \rangle) ~|\\
+                                && \langle expression \rangle + \langle expression \rangle ~|\\
+                                && \langle expression \rangle \ast \langle expression \rangle ~|\\
+                                && \langle variable \rangle\\
+                                \langle variable \rangle &::=& x~|~y
+                            \end{eqnarray*}
+                        </li>
+                    </ol>
+                </span>
+            </div>
+            <div class="tiny-text">
+                We translate mechanically from the Backus-Naur form to the productions. 
+                Let us use 
+                <span class="fragment highlight-yellow" data-fragment-index="1">
+                  $E$ for $\langle expression \rangle$
+                </span>
+                 (which we assume is the starting symbol), and 
+                <span class="fragment highlight-yellow" data-fragment-index="1">
+                  $V$ for $\langle variable \rangle$
+                </span>
+                 for convenience. The rules are 
+                <span class="fragment highlight-red" data-fragment-index="2">$E \to (E)$, </span>
+                <span class="fragment highlight-red" data-fragment-index="3">$E \to E + E$, </span>
+                <span class="fragment highlight-red" data-fragment-index="4">$E \to E \ast E$, </span>
+                <span class="fragment highlight-red" data-fragment-index="5">and $E \to V$</span>
+                (from the first form),together with 
+                <span class="fragment highlight-red" data-fragment-index="6">$V \to x$</span>
+                <span class="fragment highlight-red" data-fragment-index="7">and $V \to y$ </span>
+                (from the second).<br><br>
+
+                <ul>
+                  ⟨expression⟩ ::= (⟨expression⟩)&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;
+                  <span class="fragment highlight-red-static" data-fragment-index="2">
+                    $E \to (E)$
+                  </span>
+                  <br>
+                  ⟨expression⟩ ::= ⟨expression⟩+⟨expression⟩&nbsp;&nbsp;&nbsp;&nbsp;
+                  <span class="fragment highlight-red-static" data-fragment-index="3">
+                    $E \to E + E$
+                  </span>
+                  <br>
+                  ⟨expression⟩ ::= ⟨expression⟩∗⟨expression⟩&nbsp;&nbsp;&nbsp;&nbsp;
+                  <span class="fragment highlight-red-static" data-fragment-index="4">
+                    $E \to E \ast E$
+                  </span>
+                  <br>
+                  ⟨expression⟩ ::= ⟨variable⟩&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;
+                  <span class="fragment highlight-red-static" data-fragment-index="5">
+                    $E \to V$
+                  </span>
+                  <br>
+                  ⟨variable⟩ ::= x&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;
+                  <span class="fragment highlight-red-static" data-fragment-index="6">
+                    $V \to x$
+                  </span>
+                  <br>
+                  ⟨variable⟩ ::= y&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;
+                  <span class="fragment highlight-red-static" data-fragment-index="7">
+                    $V \to y$
+                  </span>
+                  <br>
+                </ul>
+            </div>
+          </section>
+        </section>
+
+        <!--Q3(b)-->
+        <section>
+          <span class="subtle">Question 3(b)</span>
+            <section data-auto-animate>
+              <h2>問題3(b)</h2>
+              <h4>page 896, chapter 13.1 Exercise 28(b)</h4>
+              <div class="question-block" data-id="question3">
+                <span data-id="q3-2">
+                  <ul>
+                      b)&nbsp; Find a derivation tree for $(x~\ast~y)$ + x in this grammar.
+                  </ul>
+                </span>
+              </div>
+            </section>
+            
+            <!--Q3(B)sol-->
+            <section data-auto-animate>
+              <h4>問題3(b): page 896, chapter 13.1 Exercise 28(b)</h4>
+              <div class="question-block" data-id="question3">
+                  <span data-id="q3-2">
+                      <ul>
+                          b)&nbsp; Find a derivation tree for $(x~\ast~y)$ + x in this grammar.<br>
+                      </ul>
+                  </span>
+                  <span class="fragment shrinked highlight-yellow-static" data-fragment-index="1">
+                    <br><br>
+                      <ul>
+                        $E \to (E)$, $E \to E + E$, $E \to E \ast E$, $E \to V$<br>
+                        $V \to x$, $V \to y$ 
+                      </ul>
+                  </span>
+              </div>
+              <div class="tiny-text">
+                <span class="fragment" data-fragment-index="0">
+                  The tree is easy to construct. The outermost operation is +, so the top part of the tree shows $E$ 
+                  becoming $E + E$. The right $E$ now is the variable $x$. The left $E$ is an expression in parentheses, 
+                  which is itself the product of two variables.<br>
+                <img src="img/ch13/hw13_13.1_28(b).png"  width="40%" height="40%"/>
+                <img src="img/ch13/handwrite/Q3(B).PNG" alt="" width="30%" height="30%"/>
+                </span>
+              </div>
+            </section>
+
+            <section data-auto-animate>
+              <h4>問題3(b): page 896, chapter 13.1 Exercise 28(b)</h4>
+              <div class="question-block" data-id="question3">
+                  <span data-id="q3-2">
+                      <ul>
+                          b)&nbsp; Find a derivation tree for $(x~\ast~y)$ + x in this grammar.<br>
+                      </ul>
+                  </span>
+                  <br><br>
+                  <span style="color:yellow;">
+                    <ul>
+                      $E \to (E)$, $E \to E + E$, $E \to E \ast E$, $E \to V$<br>
+                      $V \to x$, $V \to y$ 
+                    </ul>                  
+                  </span>
+              </div>
+              <div class="tiny-text">
+                The tree is easy to construct. The outermost operation is +, so the top part of the tree shows $E$ 
+                becoming $E + E$. The right $E$ now is the variable $x$. The left $E$ is an expression in parentheses, 
+                which is itself the product of two variables.
+              </div>
+              <img src="img/ch13/hw13_13.1_28(b)_leaf.png"  width="40%" height="40%"/>
+              <img src="img/ch13/handwrite/Q3(B).PNG" alt="" width="30%" height="30%"/>
+            </section>
+          </section>
+
+        <!--Q4-->
+        <section>
+          <span class="subtle">Question 4</span>
+          <section data-auto-animate>
+            <h2>問題4</h2>
+            <h4>page 896, chapter 13.1 Exercise 36</h4>
+            <div class="question-block" data-id="question4">
+              <span data-id="q4-1">
+                <ul>
+                  Several extensions to Backus-Naur form are commomly used to define phrase-structure grammars. 
+                  In one such extension, a question mark (?) indicates that the symbol, or group of symbols inside 
+                  parentheses, to its left can appear zero or once (that is, it is optional), an asterisk (*) indicates 
+                  that the symbol to its left can appear zero or more times, and a plus (+) indicates that the symbol to 
+                  its left can appear one or more times. These extensions are part of <b>extended Backus-Naur form 
+                  (EBNF)</b>, and the symbols ?, *, and + are called <b>metacharacters</b>. In EBNF the brackets 
+                  used to denote nonterminals are usually not shown.
+                  <br>
+                  <li>
+                    Give production rules in extended Backus–Naur form that generate a sandwich if a sandwich consists of 
+                    a lower slice of bread; mustard or mayonnaise; optional lettuce; an optional slice of tomato; one or 
+                    more slices of either turkey, chicken, or roast beef (in any combination); optionally some number of 
+                    slices of cheese; and a top slice of bread.
+                  </li>
+                </ul>
+              </span>
+            </div>
+          </section>
+
+          <!--Q4sol-->
+          <section data-auto-animate>
+            <h4>問題4: page 896, chapter 13.1 Exercise 36</h4>
+            <div class="question-block" data-id="question3">
+                <span data-id="q4-1">
+                  <ul>
+                    Several extensions to Backus-Naur form are commomly used to define phrase-structure grammars. 
+                  In one such extension, a question mark (?) indicates that the symbol, or group of symbols inside 
+                  parentheses, to its left can appear zero or once (that is, it is optional), an asterisk (*) indicates 
+                  that the symbol to its left can appear zero or more times, and a plus (+) indicates that the symbol to 
+                  its left can appear one or more times. These extensions are part of <b>extended Backus-Naur form 
+                  (EBNF)</b>, and the symbols ?, *, and + are called <b>metacharacters</b>. In EBNF the brackets 
+                  used to denote nonterminals are usually not shown.
+                    <br>
+                    <li>
+                      Give production rules in extended Backus–Naur form that generate a sandwich if a sandwich consists of 
+                      <span class="fragment highlight-yellow" data-fragment-index="1">
+                        a lower slice of bread;
+                      </span>
+                      <span class="fragment highlight-green" data-fragment-index="2">
+                        mustard or mayonnaise;
+                      </span>
+                      <span class="fragment highlight-blue" data-fragment-index="3">
+                        optional lettuce; an optional slice of tomato;
+                      </span>
+                      <span class="fragment highlight-red" data-fragment-index="4">
+                        one or more slices of either turkey, chicken, or roast beef (in any combination);
+                      </span>
+                      <span class="fragment highlight-green" data-fragment-index="5">
+                        optionally some number of slices of cheese;
+                      </span>
+                      and 
+                      <span class="fragment highlight-yellow" data-fragment-index="6">
+                        a top slice of bread
+                      </span>.
+                    </li>
+                  </ul> 
+                </span>
+            </div>
+            <div class="tiny-text">
+                This is straightforward, using the conventions. We assume that the string gives the sandwich from top to bottom. 
+                Note that words in roman font are constants here, and words in italics are variables.<br>
+                <ul>
+                  <i>
+                    sandwich&nbsp; ::=&nbsp; 
+                    <span class="fragment highlight-yellow" data-fragment-index="1">
+                      bread
+                    </span>
+                    &nbsp;
+                    <span class="fragment highlight-green" data-fragment-index="2">
+                      dressing
+                    </span>
+                    &nbsp;
+                    <span class="fragment highlight-blue" data-fragment-index="3">
+                      lettuce?tomato?
+                    </span>
+                    <span class="fragment highlight-red" data-fragment-index="4">
+                      meat+
+                    </span>
+                    <span class="fragment highlight-green" data-fragment-index="5">
+                      cheese∗ 
+                    </span>
+                    
+
+                    <span class="fragment highlight-yellow" data-fragment-index="6">
+                      bread
+                    </span><br>
+                    <span class="fragment highlight-green" data-fragment-index="2">
+                      dressing&nbsp; ::=&nbsp; mustard | mayonnaise
+                    </span><br>
+                    <span class="fragment highlight-red" data-fragment-index="4">
+                      meat&nbsp; ::=&nbsp; turkey | chicken | beef
+                    </span><br>
+                  </i>
+                </ul>
+                <!--
+                \begin{eqnarray*}
+                    sandwich &::=& 
+                    bread ~dressing ~lettuce?tomato?meat+cheese\ast bread\\
+                    dressing &::=& mustard | mayonnaise\\
+                    meat &::=& turkey | chicken |beef\\
+                \end{eqnarray*}
+                -->
+            </div>
+          </section>
+        </section>
+
+        <!--Q5-->
+        <section>
+          <span class="subtle">Question 5</span>
+          <section data-auto-animate>
+            <h2>問題5</h2>
+            <h4>page 902, chapter 13.2 Exercise 2(a)</h4>
+            <div class="question-block" data-id="question5">
+                <span data-id="q5-1">
+                  Give the state tables for the finite-state machines with these state diagrams.
+                </span>
+                <img src="img/ch13/hw13_13.2_2(a).PNG"/>
+              </div>
+          </section>
+          <!--Q5sol-->
+          <section data-auto-animate>
+            <h4>問題5: page 902, chapter 13.2 Exercise 2(a)</h4>
+            <div class="question-block" data-id="question5">
+              <span data-id="q5-1">
+                Give the state tables for the finite-state machines with these state diagrams.
+              </span>
+              <img src="img/ch13/hw13_13.2_2(a).PNG" alt="" width="40%" height="40%"/>
+            </div>
+            <div class="tiny-text">
+
+              <table id="fragments" class="medium-text separated">
+                <thead>
+                  <tr>
+                    <th class="fragment" data-fragment-index="0"> </th>
+                    <th colspan="2" class="fragment" data-fragment-index="0">Next State</th>
+                    <th colspan="2" class="fragment" data-fragment-index="0">Output</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="fragment" data-fragment-index="0">State</td>
+                    <td class="fragment" data-fragment-index="0">0</td>
+                    <td class="fragment" data-fragment-index="0">1</td>
+                    <td class="fragment" data-fragment-index="0">0</td>
+                    <td class="fragment" data-fragment-index="0">1</td>
+                  </tr>
+                  <tr>
+                    <td class="fragment" data-fragment-index="0">s<sub>0</sub></td>
+                    <td class="fragment" data-fragment-index="1">s<sub>1</sub></td>
+                    <td class="fragment" data-fragment-index="2">s<sub>2</sub></td>
+                    <td class="fragment" data-fragment-index="1">1</td>
+                    <td class="fragment" data-fragment-index="2">0</td>
+                  </tr>
+                  <tr>
+                    <td class="fragment" data-fragment-index="0">s<sub>1</sub></td>
+                    <td class="fragment" data-fragment-index="3">s<sub>0</sub></td>
+                    <td class="fragment" data-fragment-index="4">s<sub>3</sub></td>
+                    <td class="fragment" data-fragment-index="3">1</td>
+                    <td class="fragment" data-fragment-index="4">0</td>
+                  </tr>
+                  <tr>
+                    <td class="fragment" data-fragment-index="0">s<sub>2</sub></td>
+                    <td class="fragment" data-fragment-index="5">s<sub>3</sub></td>
+                    <td class="fragment" data-fragment-index="6">s<sub>0</sub></td>
+                    <td class="fragment" data-fragment-index="5">0</td>
+                    <td class="fragment" data-fragment-index="6">0</td>
+                  </tr>
+                  <tr>
+                    <td class="fragment" data-fragment-index="0">s<sub>3</sub></td>
+                    <td class="fragment" data-fragment-index="7">s<sub>1</sub></td>
+                    <td class="fragment" data-fragment-index="8">s<sub>2</sub></td>
+                    <td class="fragment" data-fragment-index="7">1</td>
+                    <td class="fragment" data-fragment-index="8">1</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </section>
+
+        <!--Q6-->
+        <section>
+          <span class="subtle">Question 6</span>
+          <section data-auto-animate>
+            <h2>問題6</h2>
+            <h4>page 903, chapter 13.2 Exercise 10</h4>
+            <div class="question-block" data-id="question6">
+              <span data-id="q6-1">
+                Construct a finite-state machine that changes every other bit, starting with the second bit, 
+                of an input string, and leaves the other bits unchanged.
+              </span>
+            </div>
+          </section>
+
+          <!--Q6sol-->
+          <section data-auto-animate>
+            <h4>問題6: page 903, chapter 13.2 Exercise 10</h4>
+            <div class="question-block" data-id="question6">
+              <span data-id="q6-1">
+                Construct a finite-state machine that changes every other bit, starting with the second bit, 
+                of an input string, and leaves the other bits unchanged.
+              </span>
+            </div>
+            <div class="tiny-text">
+                We need only two states, since the action depends only on 
+                <span class="fragment highlight-red" data-fragment-index="1">
+                  the parity of the number of bits
+                </span>
+                 we have read in so far. Transitions 
+                 <span class="fragment highlight-yellow" data-fragment-index="2">
+                  from state $s_0$ to state $s_1$
+                 </span>
+                  are made on 
+                 <span class="fragment highlight-yellow" data-fragment-index="2">
+                  the odd-numbered bits
+                 </span>
+                 , so there we 
+                 <span class="fragment highlight-yellow" data-fragment-index="2">
+                  output the same bit as the input
+                 </span>
+                 . The transitions 
+                 <span class="fragment highlight-green" data-fragment-index="3">
+                  back to $s_0$
+                 </span>
+                  are made on the 
+                 <span class="fragment highlight-green" data-fragment-index="3">
+                  even-numbered bits
+                 </span>
+                 , and there we 
+                 <span class="fragment highlight-green" data-fragment-index="3">
+                  make the output opposite to the input
+                 </span>
+                 .
+            </div>
+            <img src="img/ch13/hw13_13.2_10sol.PNG.jpg"/>
+          </section>
+        </section>
+
+
+        <!--Q7-->
+        <section>
+            <span class="subtle">Question 7</span>
+            <section data-auto-animate>
+              <h2>問題7</h2>
+              <h4>page 915, chapter 13.3 Exercise 24</h4>
+              <div class="question-block" data-id="question7">
+                <span data-id="q7-1">
+                    Construct a deterministic finite-state automaton that recognizes the set of all bit strings that end with 10.
+                </span>
+              </div>
+            </section>
+            <!--Q7sol-->
+            <section data-auto-animate>
+              <h4>問題7: page 915, chapter 13.3 Exercise 24</h4>
+              <div class="question-block" data-id="question7">
+                <span data-id="q7-1">
+                    Construct a deterministic finite-state automaton that recognizes the set of all bit strings that end with 10.
+                </span>
+              </div>
+              <div class="tiny-text">
+                We need states to keep tack of what the last two symbols of input were, so we create four states
+                , $s_0$, $s_1$, $s_2$, and $s_3$, corresponding to having just seen 00, 01, 10, and 11, respectively. 
+                Only $s_2$ will be final, because we want to accept precisely those strings that end with 10. 
+                We make $s_0$ the start state, so in effect we are pretending that the string began with 0's before we 
+                started accepting input; this causes no harm.
+              </div>
+              <img src="img/ch13/hw13_13.3_24sol.PNG.jpg"/>
+            </section>
+        </section>
+
+
+        <!--Q8-->
+        <section>
+            <span class="subtle">Question 8</span>
+            <section data-auto-animate>
+              <h2>問題8</h2>
+              <h4>page 926, chapter 13.4 Exercise 10</h4>
+              <div class="question-block" data-id="question8">
+                <span data-id="q8-1">
+                    Construct nondeterministic finite-state automata that recognize each of these sets
+                    <ol class="alphaList">
+                        <li>{ $\lambda, 0$ }</li>
+                        <li>{ 0, 11 }</li>
+                        <li>{ 0, 11, 000 }</li>
+                    </ol>
+                </span>
+              </div>
+            </section>
+
+            <!--Q8sol-->
+            <section data-auto-animate>
+              <h4>問題8: page 926, chapter 13.4 Exercise 10</h4>
+              <div class="question-block" data-id="question8">
+                <span data-id="q8-1">
+                    Construct nondeterministic finite-state automata that recognize each of these sets
+                    <ol class="alphaList">
+                        <li>{ $\lambda, 0$ }</li>
+                        <li>{ 0, 11 }</li>
+                        <li>{ 0, 11, 000 }</li>
+                    </ol>
+                </span>
+              </div>
+              <div class="tiny-text">
+                <ol class="alphaList">
+                  <div class="fragment" data-fragment-index="1">
+                    <li>
+                      <img src="img/ch13/hw13_13.4_10(a)sol.PNG.jpg"/>
+                    </li>
+                  </div>
+                  <div class="fragment" data-fragment-index="2">
+                    <li>
+                      <img src="img/ch13/hw13_13.4_10(b)sol.PNG.jpg"/>
+                    </li>
+                  </div>
+                  <div class="fragment" data-fragment-index="3">
+                    <li>
+                      <img src="img/ch13/hw13_13.4_10(c)sol.PNG.jpg"/>
+                    </li>
+                  </div>
+                </ol>
+              </div>
+            </section>
+        </section>
+
+
+        <!--Q9-->
+        <section>
+            <span class="subtle">Question 9</span>
+            <section data-auto-animate>
+              <h2>問題9</h2>
+              <h4>page 926, chapter 13.4 Exercise 16</h4>
+              <div class="question-block" data-id="question9">
+                <span data-id="q9-1">
+                    In Exercise 15-17 construct a regular grammar $G = (V, T, S, P)$ that generates 
+                    the language recognized by the given finite-state machine.
+                </span>
+              </div>
+              <img src="img/ch13/hw13_13.4_16.PNG.jpg"/>
+            </section>
+
+            <!--Q9sol-->
+            <section data-auto-animate>
+              <h4>問題9: page 926, chapter 13.4 Exercise 16</h4>
+              <div class="question-block" data-id="question9">
+                <span data-id="q9-1">
+                    In Exercise 15-17 construct a regular grammar $G = (V, T, S, P)$ that generates 
+                    the language recognized by the given finite-state machine.
+                </span>
+              </div>
+              <img src="img/ch13/hw13_13.4_16.PNG.jpg"/>
+              <div class="tiny-text">
+                The transitions between states cause us to put in the rules 
+                <span class="fragment highlight-red" data-fragment-index="1">
+                  $S \to 0A$, $S \to 1B$, $A \to 0B$, $A \to 1A$, $B \to 0B$, and $B \to 1A$
+                </span>
+                . The transitions to final states cause us to put in the rules 
+                 <span class="fragment highlight-red" data-fragment-index="2">
+                  $S \to 0$, $A \to 1$, and $B \to 1$
+                 </span>
+                . Finally, since $s_0$ is a final state, we add the rule 
+                <span class="fragment highlight-red" data-fragment-index="3">
+                  $S \to \lambda$
+                </span>.
+              </div>
+            </section>
+        </section>
+
+
+        <!--Q10-->
+        <section>
+            <span class="subtle">Question 10</span>
+            <section data-auto-animate>
+              <h2>問題10</h2>
+              <h4>page 936, chapter 13.5 Exercise 2</h4>
+              <div class="question-block" data-id="question10">
+                <span data-id="q10-1">
+                  Let T be the Turing machine defined by the five-tuples: $(s_0, 0, s_1, 0, R)$, $(s_0, 1, s_1, 0, L)$, 
+                  $(s_0, B, s_1, 1, R)$, $(s_1, 0, s_2, 1, R)$, $(s_1, 1, s_1, 1, R)$, $(s_1, B, s_2, 0, R)$, and 
+                  $(s_2, B, s_3, 0, R)$. For each of these initial tapes, determine the final tape when T halts, 
+                  assuming that T begins in initial position.<br>
+                </span>
+                <ul>(a)<br>&nbsp; <img src="img/ch13/hw13_13.5_2(a).jpg" alt="" width="70%" height="70%"/></ul>
+                <ul>(b)<br>&nbsp; <img src="img/ch13/hw13_13.5_2(b).jpg" alt="" width="70%" height="70%"/></ul>
+                <ul>(c)<br>&nbsp; <img src="img/ch13/hw13_13.5_2(c).jpg" alt="" width="70%" height="70%"/></ul>
+                <ul>(d)<br>&nbsp; <img src="img/ch13/hw13_13.5_2(d).jpg" alt="" width="70%" height="70%"/></ul>
+              </div>
+            </section>
+
+            <!--Q10(A)-->
+            <section data-auto-animate>
+              <h4>問題10(a): page 936, chapter 13.5 Exercise 2(a)</h4>
+              <div class="question-block" data-id="question10">
+                <span data-id="q10-1">
+                  Let T be the Turing machine defined by the five-tuples: 
+                  <span class="fragment highlight-yellow" data-fragment-index="1">$(s_0, 0, s_1, 0, R)$</span>
+                  , $(s_0, 1, s_1, 0, L)$, 
+                  $(s_0, B, s_1, 1, R)$, 
+                  <span class="fragment highlight-blue" data-fragment-index="3">$(s_1, 0, s_2, 1, R)$</span>, 
+                  <span class="fragment highlight-green" data-fragment-index="2">$(s_1, 1, s_1, 1, R)$</span>
+                  , $(s_1, B, s_2, 0, R)$, and 
+                  $(s_2, B, s_3, 0, R)$. For each of these initial tapes, determine the final tape when T halts, 
+                  assuming that T begins in initial position.<br>
+                </span>
+                <ul>(a)&nbsp; <img src="img/ch13/hw13_13.5_2(a).jpg" alt="" width="80%" height="80%"/></ul>
+              </div>
+              <div class="tiny-text">
+                <ul>
+                  (a)<br>Initially the configuration is $[s_0]0101$. Using the first five-tuple, the machine next 
+                  enters configuration $0[s_1]101$. Thereafter it proceeds as follows: 
+                  <span class="fragment highlight-yellow" data-fragment-index="1">$0[s_1]101$</span>
+                  <span class="fragment highlight-green" data-fragment-index="2">$ \to 01[s_1]01$</span>
+                  <span class="fragment highlight-blue" data-fragment-index="3">$ \to 011[s_2]1$</span>. 
+                  Since there is no five-tuple for this combination (in state $s_2$ reading $a$ 1), the machine halts. 
+                  This (the nonblank portion of)  
+                  <span class="fragment highlight-red" data-fragment-index="4">the final tape reads 0111</span>.
+                </ul>
+                <img src="img/ch13/handwrite/Q10(A).PNG" alt="" width="60%" height="60%"/>
+              </div>
+            </section>
+
+            <!--Q10(B)-->
+            <section data-auto-animate>
+              <h4>問題10(b): page 936, chapter 13.5 Exercise 2(b)</h4>
+              <div class="question-block" data-id="question10">
+                <span data-id="q10-1">
+                  Let T be the Turing machine defined by the five-tuples: $(s_0, 0, s_1, 0, R)$, 
+                  <span class="fragment highlight-green" data-fragment-index="2">$(s_0, 1, s_1, 0, L)$</span>, 
+                  $(s_0, B, s_1, 1, R)$, $(s_1, 0, s_2, 1, R)$, $(s_1, 1, s_1, 1, R)$, 
+                  <span class="fragment highlight-blue" data-fragment-index="3">$(s_1, B, s_2, 0, R)$</span>, and 
+                  $(s_2, B, s_3, 0, R)$. For each of these initial tapes, determine the final tape when T halts, 
+                  assuming that T begins in initial position.<br>
+                </span>
+                <ul>(b)<br>&nbsp; <img src="img/ch13/hw13_13.5_2(b).jpg" alt="" width="80%" height="80%"/></ul>
+              </div>
+              <div class="tiny-text">
+                <ul>
+                  (b)&nbsp; 
+                  <span class="fragment highlight-yellow" data-fragment-index="1">$[s_0]111$</span> 
+                  <span class="fragment highlight-green" data-fragment-index="2">$\to [s_1]B011$</span>
+                  <span class="fragment highlight-blue" data-fragment-index="3">$\to 0[s_2]011$ </span> 
+                  <span class="fragment highlight-red" data-fragment-index="4">$\to $halt</span>; 
+                  <span class="fragment highlight-red" data-fragment-index="4">final tape 0011</span>
+                </ul>
+                <img src="img/ch13/handwrite/Q10(B).PNG" alt="" width="60%" height="60%"/><br>
+              </div>
+            </section>
+
+            <!--Q10(C)-->
+            <section data-auto-animate>
+              <h4>問題10(c): page 936, chapter 13.5 Exercise 2(c)</h4>
+              <div class="question-block" data-id="question10">
+                <span data-id="q10-1">
+                  Let T be the Turing machine defined by the five-tuples: 
+                  <span class="fragment highlight-green" data-fragment-index="2">$(s_0, 0, s_1, 0, R)$</span>
+                  , $(s_0, 1, s_1, 0, L)$, $(s_0, B, s_1, 1, R)$, 
+                  <span class="fragment highlight-blue" data-fragment-index="3">$(s_1, 0, s_2, 1, R)$</span>
+                  , $(s_1, 1, s_1, 1, R)$, $(s_1, B, s_2, 0, R)$, and 
+                  <span class="fragment highlight-yellow" data-fragment-index="4">$(s_2, B, s_3, 0, R)$</span>. 
+                  For each of these initial tapes, determine the final tape when T halts, assuming that T begins in initial position.<br>
+                </span>
+                <ul>(c)<br>&nbsp; <img src="img/ch13/hw13_13.5_2(c).jpg" alt="" width="80%" height="80%"/></ul>
+              </div>
+              <div class="tiny-text">
+                <ul>
+                  (c)&nbsp; 
+                  <span class="fragment highlight-yellow" data-fragment-index="1">$[s_0]00B00$</span> 
+                  <span class="fragment highlight-green" data-fragment-index="2">$\to 0[s_1]0B00$</span> 
+                  <span class="fragment highlight-blue" data-fragment-index="3">$\to 01[s_2]B00$</span> 
+                  <span class="fragment highlight-yellow" data-fragment-index="4">$\to 010[s_3]00$ </span>
+                  <span class="fragment highlight-red" data-fragment-index="5">$\to $halt</span>; 
+                  <span class="fragment highlight-red" data-fragment-index="5">final tape 01000</span>
+                </ul>
+                <img src="img/ch13/handwrite/Q10(C).PNG" alt="" width="60%" height="60%"/><br>
+              </div>
+            </section>
+
+            <!--Q10(D)-->
+            <section data-auto-animate>
+              <h4>問題10(d)</h4>
+              <div class="question-block" data-id="question10">
+                <span data-id="q10-1">
+                  Let T be the Turing machine defined by the five-tuples: $(s_0, 0, s_1, 0, R)$, $(s_0, 1, s_1, 0, L)$, 
+                  <span class="fragment highlight-green" data-fragment-index="2">$(s_0, B, s_1, 1, R)$</span>
+                  , $(s_1, 0, s_2, 1, R)$, $(s_1, 1, s_1, 1, R)$, 
+                  <span class="fragment highlight-blue" data-fragment-index="3">$(s_1, B, s_2, 0, R)$</span>, and 
+                  <span class="fragment highlight-yellow" data-fragment-index="4">$(s_2, B, s_3, 0, R)$</span>. For each of these initial tapes, determine the final tape when T halts, 
+                  assuming that T begins in initial position.<br>
+                </span>
+                <ul>(d)<br>&nbsp; <img src="img/ch13/hw13_13.5_2(d).jpg" alt="" width="80%" height="80%"/></ul>
+              </div>
+              <div class="tiny-text">
+                <ul>
+                  (d)&nbsp; 
+                  <span class="fragment highlight-yellow" data-fragment-index="1">$[s_0]B$ </span>
+                  <span class="fragment highlight-green" data-fragment-index="2">$\to 1[s_1]B$ </span>
+                  <span class="fragment highlight-blue" data-fragment-index="3">$\to 10[s_2]B$ </span>
+                  <span class="fragment highlight-yellow" data-fragment-index="4">$\to 100[s_3]B$ </span>
+                  <span class="fragment highlight-red" data-fragment-index="5">$\to $halt</span>; 
+                  <span class="fragment highlight-red" data-fragment-index="5">final tape 100</span>
+                </ul>
+                <img src="img/ch13/handwrite/Q10(D).png" alt="" width="60%" height="60%"/><br>
+              </div>
+            </section>
+            
+        </section>
+
+
+      </div>
+    </div>
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/math/math.js"></script>
+    <script src="main.js"></script>
+    <script>
+      function getPath() {
+        var path = '';
+        nodes = window.location.pathname.split('/');
+        for (var index = 0; index < nodes.length - 3; index++) {
+          path += '../';
+        }
+        return path;
+      }
+
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+        math: {
+          mathjax:
+            'https://cdn.jsdelivr.net/gh/mathjax/mathjax@2.7.8/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          // pass other options into `MathJax.Hub.Config()`
+          TeX: {
+            Macros: {
+              RR: '{\\bf R}',
+            },
+          },
+        },
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath],
+        dependencies: [
+          {
+            src: 'plugin/math/math.js',
+            async: true,
+          },
+        ],
+      });
+
+      Reveal.on('autoanimate', event => {
+        setTimeout(function () {
+          removeAllAutoAnimates(event.toSlide);
+        }, Reveal.getConfig().autoAnimateDuration * 1000);
+      });
+
+      function removeAllAutoAnimates(element) {
+        try {
+          element.removeAttribute('data-auto-animate-target');
+          element.childNodes.forEach(element => {
+            removeAllAutoAnimates(element);
+          });
+        } catch {}
+      }
+    </script>
+
+    <div style="display: none" id="audio"></div>
+  </body>
+  <script>
+    // LIPSYNC
+    var audioElem = document.getElementById('audio');
+    var modifier = 150;
+    var lastVolume = 0;
+    setInterval(() => {
+      var volume = getMicorphoneVolume() / 150;
+      var lowThreshold = 0.3;
+      var modifiedVolume = 0;
+      if (volume > lowThreshold) {
+        modifiedVolume = volume * 0.7 + lastVolume * 0.3;
+      } else {
+        modifiedVolume = lastVolume / 2;
+      }
+      audioElem.innerHTML = modifiedVolume;
+      lastVolume = modifiedVolume;
+    }, 10);
+
+    //toggle avatar visibility
+    function toggleAvatar(e) {
+      if (e.keyCode != 192) {
+        return;
+      }
+      var avatar = $('canvas#live2D');
+      if (avatar.hasClass('hidden')) {
+        avatar.removeClass('hidden');
+      } else {
+        avatar.addClass('hidden');
+      }
+    }
+  </script>
+</html>

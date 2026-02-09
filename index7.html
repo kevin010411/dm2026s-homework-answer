@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+
+    <title>HW7 詳解</title>
+
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+
+    <link rel="stylesheet" href="dist/theme/black.css" id="theme" />
+
+    <!-- Theme used for syntax highlighted code -->
+    <link
+      rel="stylesheet"
+      href="plugin/highlight/monokai.css"
+      id="highlight-theme"
+    />
+    <link rel="stylesheet" href="custom.css" />
+    <style>
+      canvas#live2D {
+        transition-property: opacity;
+        transition-duration: 0.3s;
+        pointer-events: none;
+        position: fixed !important;
+        bottom: 0;
+        right: -20px;
+        z-index: 999999;
+        opacity: 1;
+      }
+
+      canvas#live2D:hover {
+        transition-delay: 0.5s;
+      }
+
+      canvas#live2D.hidden,
+      canvas#live2D:hover {
+        transition-property: opacity;
+        transition-duration: 0.3s;
+        opacity: 0;
+      }
+    </style>
+
+    <!-- Pollyfill script -->
+    <script src="./anime/dist/core-minified.js"></script>
+    <!-- Live2DCubismCore script -->
+    <script src="./anime/core/live2dcubismcore.js"></script>
+    <!-- Build script -->
+    <script src="./anime/dist/bundle.js"></script>
+    <script src="./anime/custom.js"></script>
+  </head>
+
+  <body onkeydown="toggleAvatar(event)">
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h1>HW7 詳解</h1>
+        </section>
+
+        <!--Q1(A)-->
+        <section>
+          <span class="subtle">Question 1</span>
+          <section data-auto-animate>
+            <h2>問題1(A)</h2>
+            <h4>page 477, chapter 7.1 Exercises 42(A)</h4>
+            <div class="question-block" data-id="question1">
+              Two events $E_1$ and $E_2$ are called <b>independent</b> if $p(E_1 \cap E_2)$ = $p(E_1)p(E_2)$.
+              For each of the following pairs of events, which are subsets of the set of all possible outcomes 
+              when a coin is tossed three times, determine whether or not they are independent.<br>
+                <ol class="alphaList">
+                    <li>
+                        $E_1$: tails comes up with the coin is tossed the first time;<br>
+                        $E_2$: heads comes up when the coin is tossed the second time.
+                    </li>
+                </ol>
+            </div>
+          </section>
+
+          <!--Q1(A)sol-->
+          <section data-auto-animate>
+            <h4>問題1(A): page 477, chapter 7.1 Exercises 42(A)</h4>
+            <div class="question-block" data-id="question1">
+              <span data-id="q1">
+                Two events $E_1$ and $E_2$ are called <b>independent</b> if $p(E_1 \cap E_2)$ = $p(E_1)p(E_2)$. 
+                For each of the following pairs of events, which are subsets of the set of all possible outcomes 
+                when a coin is tossed three times, determine whether or not they are independent.<br>
+                <ol class="alphaList">
+                    <li>
+                        $E_1$: tails comes up with the coin is tossed the first time;<br>
+                        &nbsp;&nbsp;$E_2$: heads comes up when the coin is tossed the second time.
+                    </li>
+                </ol>
+              </span>
+            </div>
+            <div class="tiny-text">
+              <img src="img/ch7/handwrite/Q1(A).jpg" alt="" width="60%" height="60%"/>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <h4>問題1(A): page 477, chapter 7.1 Exercises 42(A)</h4>
+            <div class="question-block" data-id="question1">
+              <span data-id="q1">
+                Two events $E_1$ and $E_2$ are called <b>independent</b> if $p(E_1 \cap E_2)$ = $p(E_1)p(E_2)$. 
+                For each of the following pairs of events, which are subsets of the set of all possible outcomes 
+                when a coin is tossed three times, determine whether or not they are independent.<br>
+                <ol class="alphaList">
+                    <li>
+                        $E_1$: tails comes up with the coin is tossed the first time;<br>
+                        &nbsp;&nbsp;$E_2$: heads comes up when the coin is tossed the second time.
+                    </li>
+                </ol>
+              </span>
+            </div>
+            <div class="tiny-text">
+              <ul>
+                <span class="fragment shrinked highlight-yellow-static" data-fragment-index="1">$E_1$ = { TTT, THH, THT, TTH }</span><br>
+                <span class="fragment shrinked highlight-yellow-static" data-fragment-index="1">$E_2$ = { THT, HHH, THH, HHT }</span><br>
+                <span class="fragment shrinked highlight-green-static" data-fragment-index="2">$E_1 \cap E_2$ = { THH, THT }</span><br><br>
+              </ul>
+              <ol class="alphaList">
+                Intuitively, those should be independent, since the first event seems to have no influence 
+                on the second. In fact we can compute as follows. First 
+                <span class="fragment highlight-yellow" data-fragment-index="1">$p(E_1) = 1/2$ </span>
+                and
+                <span class="fragment highlight-yellow" data-fragment-index="1">$p(E_2) = 1/2$ </span>
+                by the symmetry of the coin tossing. Furthermore, $E_1 \cap E_2$ is the event that 
+                <span class="fragment highlight-green" data-fragment-index="2">the first two coins come up tails and heads</span>
+                 , respectively. Since there are four equally likely outcomes for the first two coin ($HH, HT, TH$ and $TT$), 
+                <span class="fragment highlight-green" data-fragment-index="3">$p(E_1 \cap E_2)$ = 1/4</span>.Therefore 
+                <span class="fragment highlight-red" data-fragment-index="4">$p(E_1 \cap E_2) = 1/4 = (1/2)\cdot(1/2) = p(E_1)p(E_2)$</span>
+                , so the events are indeed 
+                <span class="fragment highlight-red" data-fragment-index="5">independent</span>.
+              </ol>
+            </div>
+          </section>
+        </section>
+
+
+        <!--Q1(B)-->
+        <section>
+            <span class="subtle">Question 1</span>
+            <section data-auto-animate>
+              <h2>問題1(B)</h2>
+              <h4>page 477, chapter 7.1 Exercises 42(B)</h4>
+              <div class="question-block" data-id="question1">
+                Two events $E_1$ and $E_2$ are called <b>independent</b> if $p(E_1 \cap E_2)$ = $p(E_1)p(E_2)$.
+                For each of the following pairs of events, which are subsets of the set of all possible outcomes 
+                when a coin is tossed three times, determine whether or not they are independent.<br>
+                  <ol class="alphaList">
+                    <ul>
+                        b)&nbsp; $E_1$: the first coin comes up tails;<br>
+                        &nbsp;&nbsp;$E_2$: two, and not three, heads come up in a row.
+                    </ul>
+                </ol>
+              </div>
+            </section>
+          <!--Q1(B)sol-->
+          <section data-auto-animate>
+            <h4>問題1(B): page 477, chapter 7.1 Exercises 42(B)</h4>
+            <div class="question-block" data-id="question1">
+              <span data-id="q1">
+                Two events $E_1$ and $E_2$ are called <b>independent</b> if $p(E_1 \cap E_2)$ = $p(E_1)p(E_2)$ 
+                For each of the following pairs of events, which are subsets of the set of all possible outcomes 
+                when a coin is tossed three times, determine whether or not they are independent.<br>
+                <ul>
+                  b)&nbsp; $E_1$: the first coin comes up tails;<br>
+                  &nbsp;&nbsp;$E_2$: two, and not three, heads come up in a row.
+                </ul>
+              </span>
+            </div>
+            <div class="tiny-text">
+              <img src="img/ch7/handwrite/Q1(B).jpg" alt="" width="60%" height="60%"/>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <h4>問題1(B): page 477, chapter 7.1 Exercises 42(B)</h4>
+            <div class="question-block" data-id="question1">
+              <span data-id="q1">
+                Two events $E_1$ and $E_2$ are called <b>independent</b> if $p(E_1 \cap E_2)$ = $p(E_1)p(E_2)$ 
+                For each of the following pairs of events, which are subsets of the set of all possible outcomes 
+                when a coin is tossed three times, determine whether or not they are independent.<br>
+                <ul>
+                  b)&nbsp; $E_1$: the first coin comes up tails;<br>
+                  &nbsp;&nbsp;$E_2$: two, and not three, heads come up in a row.
+                </ul>
+              </span>
+            </div>
+            <div class="tiny-text">
+              <ul>
+                <span class="fragment shrinked highlight-yellow-static" data-fragment-index="1">$E_1$ = { TTT, THH, THT, TTH }</span><br>
+                <span class="fragment shrinked highlight-yellow-static" data-fragment-index="2">$E_2$ = { HHT, THH }</span><br>
+                <span class="fragment shrinked highlight-green-static" data-fragment-index="3">$E_1 \cap E_2$ = { THH }</span><br><br>
+              </ul>
+              <ul>
+                b)&nbsp; Again 
+                <span class="fragment highlight-yellow" data-fragment-index="1">$p(E_1) = 1/2$</span>. 
+                For $E_2$, note that there are 8 equally likely outcomes for the 
+                three coins, and in 2 of these cases $E_2$ occurs (namely $HHT$ and $THH$); therefore 
+                <span class="fragment highlight-yellow" data-fragment-index="2">$p(E_2) = 2/8 = 1/4$</span>. 
+                Thus $p(E_1)p(E_2) = (1/2)\cdot(1/4) = 1/8$. 
+                Now $E_1 \cap E_2$ is the event that 
+                <span class="fragment highlight-green" data-fragment-index="3">the first coin comes up tails, and two but not three heads come up in a row</span>. 
+                This occurs precisely when the outcome is $THH$, so the probability is 
+                <span class="fragment highlight-green" data-fragment-index="4">1/8</span>. 
+                <span class="fragment highlight-red" data-fragment-index="5">$p(E_1)p(E_2)$ = $p(E_1 \cap E_2)$</span>
+                , so the events are 
+                <span class="fragment highlight-red" data-fragment-index="6">independent</span>.
+              </ul>
+            </div>
+          </section>
+        </section>
+
+
+        <!--Q1(C)-->
+        <section>
+            <span class="subtle">Question 1</span>
+            <section data-auto-animate>
+              <h2>問題1(C)</h2>
+              <h4>page 477, chapter 7.1 Exercises 42(C)</h4>
+              <div class="question-block" data-id="question1">
+                  Two events $E_1$ and $E_2$ are called <b>independent</b> if $p(E_1 \cap E_2)$ = $p(E_1)p(E_2)$. 
+                  For each of the following pairs of events, which are subsets of the set of all possible outcomes when a coin is tossed three times, determine whether or not they are independent.<br>
+                  <ul>
+                     c)&nbsp; $E_1$: the second coin comes up tails; <br>
+                     &nbsp;&nbsp;$E_2$: two, and not three, heads come up in a row.
+                   </ul>
+              </div>
+            </section>
+
+          <!--Q1(C)sol-->
+          <section data-auto-animate>
+            <h4>問題1(C): page 477, chapter 7.1 Exercises 42(C)</h4>
+            <div class="question-block" data-id="question1">
+              <span data-id="q1">
+                Two events $E_1$ and $E_2$ are called <b>independent</b> if $p(E_1 \cap E_2)$ = $p(E_1)p(E_2)$. 
+                For each of the following pairs of events, which are subsets of the set of all possible outcomes 
+                when a coin is tossed three times, determine whether or not they are independent.<br>
+                <ul>
+                  c)&nbsp; $E_1$: the second coin comes up tails; <br>
+                  &nbsp;&nbsp;$E_2$: two, and not three, heads come up in a row.
+                </ul> 
+              </span>
+            </div>
+            <div class="tiny-text">
+              <img src="img/ch7/handwrite/Q1(C).jpg" alt="" width="60%" height="60%"/>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <h4>問題1(C): page 477, chapter 7.1 Exercises 42(C)</h4>
+            <div class="question-block" data-id="question1">
+              <span data-id="q1">
+                Two events $E_1$ and $E_2$ are called <b>independent</b> if $p(E_1 \cap E_2)$ = $p(E_1)p(E_2)$. 
+                For each of the following pairs of events, which are subsets of the set of all possible outcomes 
+                when a coin is tossed three times, determine whether or not they are independent.<br>
+                <ul>
+                  c)&nbsp; $E_1$: the second coin comes up tails; <br>
+                  &nbsp;&nbsp;$E_2$: two, and not three, heads come up in a row.
+                </ul> 
+              </span>
+            </div>
+            <div class="tiny-text">
+              <ul>
+                <span class="fragment shrinked highlight-yellow-static" data-fragment-index="1">$E_1$ = { HTH, HTT, TTT, TTH }</span><br>
+                <span class="fragment shrinked highlight-yellow-static" data-fragment-index="1">$E_2$ = { HHT, THH }</span><br>
+                <span class="fragment shrinked highlight-green-static" data-fragment-index="2">$E_1 \cap E_2$ = ∅</span><br><br>
+              </ul>
+              <ul>
+                c)&nbsp; As in  part (b), 
+                <span class="fragment highlight-yellow" data-fragment-index="1">$p(E_1) = 1/2$</span>
+                 and 
+                 <span class="fragment highlight-yellow" data-fragment-index="1">$p(E_2) = 1/4$</span>. 
+                This time 
+                <span class="fragment highlight-green" data-fragment-index="2">$p(E_1 \cap E_2) = 0$</span>
+                , since there is no way to get two heads in a row if the second coin comes up tails. Since 
+                <span class="fragment highlight-red" data-fragment-index="3">$p(E_1)p(E_2) \neq p(E_1 \cap E_2)$</span>
+                , the events are 
+                <span class="fragment highlight-red" data-fragment-index="4">not independent</span>.
+              </ul>
+            </div>
+          </section>
+        </section>
+
+        <!--Q2-->
+        <section>
+          <span class="subtle">Question 2</span>
+          <section data-auto-animate>
+            <h2>問題2</h2>
+            <h4>page 477, chapter 7.1 Exercises 44</h4>
+            <div class="question-block" data-id="question2">
+              <span data-id="q2">
+                <ul>
+                  Suppose that instead of three doors, there are four doors in the Monty Hall puzzle. <br>
+                  <li>
+                    What is the probability that you win by not changing once the host, who knows what is behind each door, 
+                    opens a losing door and gives you the chance to change doors? <br>
+                  </li>
+                  <li>
+                    What is the probability that you win by changing the door you select to one of the two remaining doors 
+                    among the three that you did not select?<br>
+                  </li>
+                </ul>
+              </span>
+            </div>
+          </section>
+
+          <!--Q2sol-->
+          <section data-auto-animate>
+            <h4>問題2: page 477, chapter 7.1 Exercises 44</h4>
+            <div class="question-block" data-id="question2">
+              <span data-id="q2">
+                <ul>
+                  Suppose that instead of three doors, there are four doors in the Monty Hall puzzle. <br>
+                  <li>
+                    What is the probability that you win by not changing once the host, who knows what is behind each door, 
+                    opens a losing door and gives you the chance to change doors? <br>
+                  </li>
+                  <li>
+                    What is the probability that you win by changing the door you select to one of the two remaining doors 
+                    among the three that you did not select?<br>
+                  </li>
+                </ul>
+              </span>
+            </div>
+            <div class="tiny-text">
+              <img src="img/ch7/handwrite/Q2.jpg" alt="" width="60%" height="60%"/>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <h4>問題2: page 477, chapter 7.1 Exercises 44</h4>
+            <div class="question-block" data-id="question2">
+              <span data-id="q2">
+                <ul>
+                  Suppose that instead of three doors, there are four doors in the Monty Hall puzzle. <br>
+                  <li>
+                    What is the probability that you win by not changing once the host, who knows what is behind each door, 
+                    opens a losing door and gives you the chance to change doors? <br>
+                  </li>
+                  <li>
+                    What is the probability that you win by changing the door you select to one of the two remaining doors 
+                    among the three that you did not select?<br>
+                  </li>
+                </ul>
+              </span>
+            </div>
+            <div class="tiny-text">
+              You had a 1/4 chance of winning with your original selection. Just as in original problem, the 
+              host's action did not change this, since he would act the same way regardless of whether your 
+              selection was a winner or a loser. 
+              <span class="fragment highlight-red" data-fragment-index="1">Therefore you have a 1/4 chance of winning if you do not change</span>. 
+              This implies that there is a 3/4 chance of the prize's being behind one of the other doors. Since 
+              there are two such doors and by symmetry the probabilities for each of them must be the same, 
+              your chance of winning after switching is 
+              <span class="fragment highlight-red" data-fragment-index="2">half of 3/4, or 3/8</span>.  
+            </div>
+          </section>
+        </section>
+        
+        <!--Q3-->
+        <section>
+          <span class="subtle">Question 3</span>
+          <section data-auto-animate>
+            <h2>問題3</h2>
+            <h4>page 494, chapter 7.2 Exercises 40</h4>
+            <div class="question-block" data-id="question3">
+              <span data-id="q3-1">
+                Devise a Monte Carlo algorithm that determines whether a permutation of the integers 1 through
+                 $n$ has already been sorted (that is, it is in increasing order), or instead, is a random 
+                 permutation. A step of the algorithm should answer "true" if it determines the list is not 
+                 sorted and "unknown" otherwise. After $k$ steps, the algorithm decides that the integers are 
+                 sorted if the answer is "unknown" in each step. Show that as the number of steps increases, 
+                 the probability that the algorithm produces an incorrect answer is extremely small.
+                 [<i>Hint:</i> For each step, test whether certain elements are in the correct order. 
+                 Make sure these tests are independent.] 
+              </span>
+            </div>
+          </section>
+          <!--Q3sol-->
+          <section data-auto-animate data-transition="fade">
+            <h4>問題3: page 494, chapter 7.2 Exercises 40</h4>
+            <div class="question-block" data-id="question3">
+              <span data-id="q3-1">
+                <span class="fragment highlight-yellow" data-fragment-index="1">Devise a Monte Carlo algorithm that determines whether a permutation of the integers 1 through
+                 $n$ has already been sorted (that is, it is in increasing order), or instead, is a random 
+                 permutation.</span> A step of the algorithm should answer "true" if it determines the list is not 
+                 sorted and "unknown" otherwise. After $k$ steps, the algorithm decides that the integers are 
+                 sorted if the answer is "unknown" in each step. 
+                 Show that as the number of steps increases, the probability that the algorithm produces an incorrect answer is extremely small.
+                 [<i>Hint:</i> For each step, test whether certain elements are in the correct order. 
+                 Make sure these tests are independent.] 
+              </span>
+            </div>
+            <div class="tiny-text">
+              <img src="img/ch7/handwrite/Q3.jpg" alt="" width="45%" height="45%"/>
+            </div>
+          </section>
+          <section data-auto-animate>
+            <h4>問題3: page 494, chapter 7.2 Exercises 40</h4>
+            <div class="question-block" data-id="question3">
+              <span data-id="q3-1">
+                 Devise a Monte Carlo algorithm that determines whether a permutation of the integers 1 through
+                 $n$ has already been sorted (that is, it is in increasing order), or instead, is a random 
+                 permutation. A step of the algorithm should answer "true" if it determines the list is not 
+                 sorted and "unknown" otherwise. After $k$ steps, the algorithm decides that the integers are 
+                 sorted if the answer is "unknown" in each step. 
+                 <span class="fragment highlight-red" data-fragment-index="1">Show that as the number of steps increases, the probability that the algorithm produces an incorrect answer is extremely small.</span>
+                 [<i>Hint:</i> For each step, test whether certain elements are in the correct order. 
+                 Make sure these tests are independent.] 
+              </span>
+            </div>
+            <div class="tiny-text">
+              <div class="fragment" data-fragment-index="0">
+                We assume that $n$ is much greater that $k$, since otherwise, we could simply compare each 
+                element with its successor in the list and know for sure whether or not the list is sorted. 
+                We 
+                <span class="fragment highlight-yellow" data-fragment-index="2">choose two distinct random integers $i$ and $j$</span>
+                from 1 to $n$, and we 
+                <span class="fragment highlight-yellow" data-fragment-index="3">compare the $i^{th}$ and $j^{th}$ elements </span>
+                of the given list; if they are 
+                <span class="fragment highlight-yellow" data-fragment-index="4">in correct order </span>
+                relative to each other, then we answer 
+                <span class="fragment highlight-yellow" data-fragment-index="4">"unknown"</span>
+                 at this step and proceed. If 
+                <span class="fragment highlight-yellow" data-fragment-index="4">not</span>
+                 , then we answer 
+                <span class="fragment highlight-yellow" data-fragment-index="4">"true" </span>
+                (i.e., the list is not sorted) and halt. We 
+                <span class="fragment highlight-green" data-fragment-index="5">repeat this for $k$ steps (or until we have found elements out of order)</span>
+                , choosing new random indices each time. If we have 
+                <span class="fragment highlight-green" data-fragment-index="6">not found</span>
+                any elements out of order after $k$ steps, we halt and answer 
+                <span class="fragment highlight-green" data-fragment-index="6">"false"</span>
+                 (i.e, the original list is probably sorted). Since in a random list the probability that two randomly 
+                 chosen elements are in correct order relative to each other is 1/2, 
+                <span class="fragment highlight-red" data-fragment-index="7">the probability that we wrongly answer "false" will be about $1/2^k$ </span>
+                if the list is a random permutation. 
+                <span class="fragment highlight-red" data-fragment-index="8">If $k$ is large, this will be very small</span>; 
+                for example, if $k$ = 100, then this will be less than one chance in $10^{30}$.
+              </div>
+            </div>
+          </section>
+        </section>
+
+
+        <!--Q4-->
+        <section>
+          <span class="subtle">Question 4</span>
+          <section data-auto-animate>
+            <h2>問題4</h2>
+            <h4>page 502, chapter 7.3 Exercises 18</h4>
+            <div class="question-block" data-id="question4">
+              <span data-id="q4-1">
+                Suppose that Bayesian spam filter is trained on a set of 500 spam messages and 200 messages
+                 that are not spam. The word "exciting" appears in 40 spam messages and in 25 messages 
+                 that are not spam. Would an incoming message be rejected as spam if it contains the word 
+                 "exciting" and the threshold for rejecting spam is 0.9?
+              </span>
+            </div>
+          </section>
+          <!--Q4sol-->
+          <section data-auto-animate>
+            <h4>問題4: page 502, chapter 7.3 Exercises 18</h4>
+            <div class="question-block" data-id="question4">
+              <span data-id="q4-1">
+                 Suppose that Bayesian spam filter is trained on a set of 500 spam messages and 200 messages
+                 that are not spam. The word "exciting" appears in 40 spam messages and in 25 messages 
+                 that are not spam. Would an incoming message be rejected as spam if it contains the word 
+                 "exciting" and the threshold for rejecting spam is 0.9?
+              </span>
+            </div>
+            <img src="img/ch7/handwrite/Q4.jpg" alt="" width="35%" height="40%"/>
+            <div class="tiny-text">
+              <div class="fragment" data-fragment-index="1">
+                <ul>
+                  We follow the procedure in Example 3. We first compute that 
+                  <span class="fragment highlight-yellow" data-fragment-index="2">$p$(exciting) = 40/500 = 0.08</span> and 
+                  <span class="fragment highlight-yellow" data-fragment-index="3">$q$(exciting) = 25/200 = 0.125</span>. 
+                  Then we compute that
+                  <span class="fragment highlight-green" data-fragment-index="4">\begin{equation*}
+                    r(exciting) = \frac{p(exciting)}{p(exciting)+q(exciting)}=\frac{0.08}{0.08+0.125}\approx0.390.
+                  \end{equation*}</span>
+                  Because $r$(exciting) is 
+                  <span class="fragment highlight-red" data-fragment-index="5">less than the threshold 0.9</span>, an incoming message containing "exciting" 
+                  <span class="fragment highlight-red" data-fragment-index="6">would not be rejected</span>.
+                </ul>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <!--Q5-->
+        <section>
+          <span class="subtle">Question 5</span>
+          <section data-auto-animate>
+            <h2>問題5</h2>
+            <h4>page 502, chapter 7.3 Exercises 20</h4>
+            <div class="question-block" data-id="question5">
+              <span data-id="q5-1">
+                Would we reject a message as spam in Example 4: 
+                Suppose that we train a Bayesian spam filter on a set of 2000 spam messages and 1000 messages
+                that are not spam. The word “stock” appears in 400 spam messages and 60 messages that are not
+                spam, and the word “undervalued” appears in 200 spam messages and 25 messages that are not
+                spam. Will we reject such messages as spam when we set the threshold at 0.9?
+              </span>
+              <ol class="alphaList">
+                <li>using just the fact that the word "undervalued" occurs in the message?</li>
+                <li>using just the fact that the word "stock" occurs in the message?</li>
+              </ol>
+            </div>
+          </section>
+          <!--Q5sol-->
+          <section data-auto-animate>
+            <h4>問題5: page 502, chapter 7.3 Exercises 20</h4>
+            <div class="question-block" data-id="question5">
+              <span data-id="q5-1">
+                <ul>
+                  Would we reject a message as spam in Example 4: 
+                  Suppose that we train a Bayesian spam filter on a set of 2000 spam messages and 1000 messages
+                  that are not spam. The word “stock” appears in 400 spam messages and 60 messages that are not
+                  spam, and the word “undervalued” appears in 200 spam messages and 25 messages that are not
+                  spam. Will we reject such messages as spam when we set the threshold at 0.9?
+                </ul>
+              </span>
+              <ol class="alphaList">
+                <li>using just the fact that the word "undervalued" occurs in the message?</li>
+                <li>using just the fact that the word "stock" occurs in the message?</li>
+              </ol>
+            </div>
+            <div class="tiny-text"  style="height:400px;overflow-y:auto">
+              <img src="img/ch7/handwrite/Q5.jpg" alt="" width="45%" height="50%"/>
+              <ol class="alphaList">
+                <div class="fragment" data-fragment-index="1">
+                  <li>
+                    We follow the procedure in Example 3. In Example 4 we found 
+                    <span class="fragment highlight-yellow" data-fragment-index="2">$p$(undervalued) = 200∕2000 = 0.1</span> and 
+                    <span class="fragment highlight-yellow" data-fragment-index="3">$q$(undervalued) = 25∕1000 = 0.025</span>. 
+                    So we compute that
+                    <span class="fragment highlight-green" data-fragment-index="4">
+                    \begin{equation*}
+                      r(undervalued) = \frac{p(undervalued)}{p(undervalued)+q(undervalued)}=\frac{0.01}{0.01+0.025}\approx0.286.
+                    \end{equation*}</span>
+                    Because $r$(undervalued) is 
+                    <span class="fragment highlight-red" data-fragment-index="5">less than the threshold 0.9</span>, an incoming message containing "undervalued" 
+                    <span class="fragment highlight-red" data-fragment-index="6">would not be rejected</span>.<br>
+                  </li>
+                </div>
+                <div class="fragment" data-fragment-index="7">
+                  <li>
+                    This is similar to part (a), where 
+                    <span class="fragment highlight-yellow" data-fragment-index="8">$p$(stock) = 400∕2000 = 0.2</span> and 
+                    <span class="fragment highlight-yellow" data-fragment-index="9">$q$(stock) = 60∕1000 = 0.06</span>. 
+                    Then we compute that
+                    <span class="fragment highlight-green" data-fragment-index="10">
+                    \begin{equation*}
+                      r(stock) = \frac{p(stock)}{p(stock)+q(stock)}=\frac{0.2}{0.2+0.06}\approx0.769.
+                    \end{equation*}</span>
+                    Because $r$(stock) is 
+                    <span class="fragment highlight-red" data-fragment-index="11">less than the threshold 0.9</span>, an incoming message containing "stock" 
+                    <span class="fragment highlight-red" data-fragment-index="12">would not be rejected</span>. 
+                    Notice that each event alone was not enough to cause rejection, but both events together were enough (see Example 4).
+                  </li>
+                </div>
+              </ol>
+            </div>
+          </section>
+
+          </section>
+
+        </section>
+
+
+
+      </div>
+    </div>
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/math/math.js"></script>
+    <script>
+      function getPath() {
+        var path = '';
+        nodes = window.location.pathname.split('/');
+        for (var index = 0; index < nodes.length - 3; index++) {
+          path += '../';
+        }
+        return path;
+      }
+
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+        math: {
+          mathjax:
+            'https://cdn.jsdelivr.net/gh/mathjax/mathjax@2.7.8/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          // pass other options into `MathJax.Hub.Config()`
+          TeX: {
+            Macros: {
+              RR: '{\\bf R}',
+            },
+          },
+        },
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath],
+        dependencies: [
+          {
+            src: 'plugin/math/math.js',
+            async: true,
+          },
+        ],
+      });
+
+      Reveal.on('autoanimate', event => {
+        setTimeout(function () {
+          removeAllAutoAnimates(event.toSlide);
+        }, Reveal.getConfig().autoAnimateDuration * 1000);
+      });
+
+      function removeAllAutoAnimates(element) {
+        try {
+          element.removeAttribute('data-auto-animate-target');
+          element.childNodes.forEach(element => {
+            removeAllAutoAnimates(element);
+          });
+        } catch {}
+      }
+    </script>
+
+    <div style="display: none" id="audio"></div>
+  </body>
+  <script>
+    // LIPSYNC
+    var audioElem = document.getElementById('audio');
+    var modifier = 150;
+    var lastVolume = 0;
+    setInterval(() => {
+      var volume = getMicorphoneVolume() / 150;
+      var lowThreshold = 0.3;
+      var modifiedVolume = 0;
+      if (volume > lowThreshold) {
+        modifiedVolume = volume * 0.7 + lastVolume * 0.3;
+      } else {
+        modifiedVolume = lastVolume / 2;
+      }
+      audioElem.innerHTML = modifiedVolume;
+      lastVolume = modifiedVolume;
+    }, 10);
+
+    //toggle avatar visibility
+    function toggleAvatar(e) {
+      if (e.keyCode != 192) {
+        return;
+      }
+      var avatar = $('canvas#live2D');
+      if (avatar.hasClass('hidden')) {
+        avatar.removeClass('hidden');
+      } else {
+        avatar.addClass('hidden');
+      }
+    }
+  </script>
+</html>
