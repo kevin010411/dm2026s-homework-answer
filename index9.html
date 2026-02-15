@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en-us">
   <head>
     <meta charset="utf-8" />
@@ -1024,7 +1024,7 @@
             <div class="tiny-text">
               <ol class="alphaList">
                 <li class="fragment" data-fragment-index="1">
-                  a) This is not an equivalence relation, since it
+                  a) No, because it is
                   <span
                     class="fragment highlight-yellow"
                     data-fragment-index="9"
@@ -1032,21 +1032,21 @@
                   >
                 </li>
                 <li class="fragment" data-fragment-index="10">
-                  b) This is an equivalence relation; one equivalence class
+                  b) Yes,because it is reflexive, symmetric, and transitive.
                   <span
                     class="fragment highlight-yellow"
                     data-fragment-index="11"
-                    >consists of the first and third elements, and the other
-                    consists of the second and fourth elements.</span
+                  >
+                    The equivalence classes are {1,3} and {2,4}.</span
                   >
                 </li>
                 <li class="fragment" data-fragment-index="12">
-                  c) This is an equivalence relation; one equivalence class
+                  c) Yes, because it is reflexive, symmetric, and transitive.
                   <span
                     class="fragment highlight-yellow"
                     data-fragment-index="13"
-                    >consists of the first, second and third elements, and the
-                    other consists of the fourth elements.</span
+                  >
+                    The equivalence classes are $\{1,2,3\}$ and $\{4\}$.</span
                   >
                 </li>
               </ol>
@@ -1165,10 +1165,10 @@
     <script src="main.js"></script>
     <script>
       function getPath() {
-        var path = '';
-        nodes = window.location.pathname.split('/');
+        var path = "";
+        nodes = window.location.pathname.split("/");
         for (var index = 0; index < nodes.length - 3; index++) {
-          path += '../';
+          path += "../";
         }
         return path;
       }
@@ -1180,12 +1180,12 @@
         hash: true,
         math: {
           mathjax:
-            'https://cdn.jsdelivr.net/gh/mathjax/mathjax@2.7.8/MathJax.js',
-          config: 'TeX-AMS_HTML-full',
+            "https://cdn.jsdelivr.net/gh/mathjax/mathjax@2.7.8/MathJax.js",
+          config: "TeX-AMS_HTML-full",
           // pass other options into `MathJax.Hub.Config()`
           TeX: {
             Macros: {
-              RR: '{\\bf R}',
+              RR: "{\\bf R}",
             },
           },
         },
@@ -1193,13 +1193,13 @@
         plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath],
         dependencies: [
           {
-            src: 'plugin/math/math.js',
+            src: "plugin/math/math.js",
             async: true,
           },
         ],
       });
 
-      Reveal.on('autoanimate', event => {
+      Reveal.on("autoanimate", (event) => {
         setTimeout(function () {
           removeAllAutoAnimates(event.toSlide);
         }, Reveal.getConfig().autoAnimateDuration * 1000);
@@ -1207,8 +1207,8 @@
 
       function removeAllAutoAnimates(element) {
         try {
-          element.removeAttribute('data-auto-animate-target');
-          element.childNodes.forEach(element => {
+          element.removeAttribute("data-auto-animate-target");
+          element.childNodes.forEach((element) => {
             removeAllAutoAnimates(element);
           });
         } catch {}
@@ -1219,7 +1219,7 @@
   </body>
   <script>
     // LIPSYNC
-    var audioElem = document.getElementById('audio');
+    var audioElem = document.getElementById("audio");
     var modifier = 150;
     var lastVolume = 0;
     setInterval(() => {
@@ -1240,11 +1240,11 @@
       if (e.keyCode != 192) {
         return;
       }
-      var avatar = $('canvas#live2D');
-      if (avatar.hasClass('hidden')) {
-        avatar.removeClass('hidden');
+      var avatar = $("canvas#live2D");
+      if (avatar.hasClass("hidden")) {
+        avatar.removeClass("hidden");
       } else {
-        avatar.addClass('hidden');
+        avatar.addClass("hidden");
       }
     }
   </script>
